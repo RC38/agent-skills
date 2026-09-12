@@ -76,7 +76,9 @@ EChart Skills 是 Apache ECharts 技術棧的完整技能族，包含以下子�
 echart/
 ├── SKILL.md                    # 母技能定義
 ├── references/
-│   └── overview.md            # 技能族概述
+│   ├── overview.md            # 技能族概述
+│   ├── 清單網址.md             # 官方文件連結清單（各子技能查證 API / 配置項的索引）
+│   └── 範例清單.md             # 官方示例中心 39 分類 365 個範例（依官方分類 + 範例網址）
 └── skills/                     # 子技能目錄
     ├── echart-basic/
     ├── echart-relation/

@@ -3,40 +3,40 @@ name: echart-advanced
 version: v1.0.0
 author: skill-factory
 parent: echart
-description: ECharts 高级特性技能，掌握数据集、数据区域缩放、自定义系列等高级功能，用于数据处理、交互探索和定制渲染
+description: ECharts 高階特性技能，掌握資料集、資料區域縮放、自定義系列等高階功能，用於資料處理、互動探索和定製渲染
 tags: [echarts, dataset, dataZoom, custom, series, advanced]
 dependency:
   parent: echart
   requires: echart-basic
 ---
 
-# EChart Advanced Skill - 高级特性技能
+# EChart Advanced Skill - 高階特性技能
 
-## 任务目标
+## 任務目標
 
-- **本 Skill 用于**：掌握ECharts高级特性（数据处理、交互探索、定制渲染）
+- **本 Skill 用於**：掌握ECharts高階特性（資料處理、互動探索、定製渲染）
 - **核心能力**：
-  - 数据集(Dataset)：行列数据映射、数据变换
-  - 数据区域缩放(DataZoom)：滑块缩放、框选缩放
-  - 自定义系列(Custom Series)：自定义渲染逻辑
-  - 富文本(Rich Text)：丰富的文字样式
-- **触发条件**：处理复杂数据、需要深度交互、定制渲染时
+  - 資料集(Dataset)：行列資料對映、資料變換
+  - 資料區域縮放(DataZoom)：滑塊縮放、框選縮放
+  - 自定義系列(Custom Series)：自定義渲染邏輯
+  - 富文字(Rich Text)：豐富的文字樣式
+- **觸發條件**：處理複雜資料、需要深度互動、定製渲染時
 
-## 图表类型
+## 圖表型別
 
-### 数据集 (Dataset)
+### 資料集 (Dataset)
 
-**展示信息**：结构化表格数据的可视化
+**展示資訊**：結構化表格資料的視覺化
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| dimensions | 维度定义 | 列名和类型 |
-| source | 数据源 | 数组/对象数组 |
-| encode | 编码映射 | 指定x/y/series映射 |
-| transform | 数据变换 | filter/sort/aggregate |
+| dimensions | 維度定義 | 列名和型別 |
+| source | 資料來源 | 陣列/物件陣列 |
+| encode | 編碼對映 | 指定x/y/series對映 |
+| transform | 資料變換 | filter/sort/aggregate |
 
-**变量关系**：行列数据到图表的映射关系
+**變數關係**：行列資料到圖表的對映關係
 
 ```javascript
 option = {
@@ -57,11 +57,11 @@ option = {
 };
 ```
 
-### 数据变换
+### 資料變換
 
 ```javascript
 dataset: [{
-  source: [...]  // 原始数据
+  source: [...]  // 原始資料
 }, {
   transform: {
     type: 'filter',
@@ -84,27 +84,27 @@ dataset: [{
 }]
 ```
 
-### 数据区域缩放 (DataZoom)
+### 資料區域縮放 (DataZoom)
 
-**展示信息**：数据的局部放大和浏览
+**展示資訊**：資料的區域性放大和瀏覽
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
 | start | 起始位置 | 0-100百分比 |
-| end | 结束位置 | 0-100百分比 |
-| type | 类型 | 'inside'/'slider'/'rect' |
-| xAxisIndex | 绑定轴 | 关联的x轴索引 |
-| yAxisIndex | 绑定轴 | 关联的y轴索引 |
+| end | 結束位置 | 0-100百分比 |
+| type | 型別 | 'inside'/'slider'/'rect' |
+| xAxisIndex | 繫結軸 | 關聯的x軸索引 |
+| yAxisIndex | 繫結軸 | 關聯的y軸索引 |
 
-**变量关系**：缩放范围与原始数据的映射
+**變數關係**：縮放範圍與原始資料的對映
 
-**子类型**：
-- 内置滚轮缩放(inside)
-- 滑块缩放(slider)
-- 框选手动选择(rect)
-- 多轴缩放
-- 时间轴缩放
+**子型別**：
+- 內建滾輪縮放(inside)
+- 滑塊縮放(slider)
+- 框選手動選擇(rect)
+- 多軸縮放
+- 時間軸縮放
 
 ```javascript
 option = {
@@ -130,27 +130,27 @@ option = {
 };
 ```
 
-### 自定义系列 (Custom Series)
+### 自定義系列 (Custom Series)
 
-**展示信息**：完全自定义的渲染逻辑
+**展示資訊**：完全自定義的渲染邏輯
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| type | 'custom' | 自定义类型 |
-| renderItem | 渲染函数 | 返回图形对象 |
-| encode | 编码映射 | 数据到坐标的映射 |
-| data | 数据数组 | 渲染使用的数据 |
+| type | 'custom' | 自定義型別 |
+| renderItem | 渲染函式 | 返回圖形物件 |
+| encode | 編碼對映 | 資料到座標的對映 |
+| data | 資料陣列 | 渲染使用的資料 |
 
-**变量关系**：数据到自定义图形的映射
+**變數關係**：資料到自定義圖形的對映
 
-**子类型**：
-- 自定义柱状图趋势线
-- 自定义误差范围
-- 甘特图
-- 火焰图
-- 风向图
-- 六边形分箱图
+**子型別**：
+- 自定義柱狀圖趨勢線
+- 自定義誤差範圍
+- 甘特圖
+- 火焰圖
+- 風向圖
+- 六邊形分箱圖
 
 ```javascript
 series: [{
@@ -171,16 +171,16 @@ series: [{
 }]
 ```
 
-### 富文本 (Rich Text)
+### 富文字 (Rich Text)
 
-**展示信息**：丰富的文字样式和布局
+**展示資訊**：豐富的文字樣式和佈局
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| rich | 富文本定义 | 样式名称和配置 |
-| textStyle | 文本样式 | 使用rich引用 |
-| formatter | 格式化 | 富文本模板 |
+| rich | 富文字定義 | 樣式名稱和配置 |
+| textStyle | 文字樣式 | 使用rich引用 |
+| formatter | 格式化 | 富文字模板 |
 
 ```javascript
 option = {
@@ -205,13 +205,13 @@ option = {
 
 ## 通用配置
 
-### DataZoom 详细配置
+### DataZoom 詳細配置
 
 ```javascript
 dataZoom: [{
   type: 'slider',
   show: true,
-  xAxisIndex: [0, 1],           // 关联多个轴
+  xAxisIndex: [0, 1],           // 關聯多個軸
   start: 0,
   end: 100,
   height: 30,
@@ -234,17 +234,17 @@ dataZoom: [{
 }]
 ```
 
-### 自定义系列 renderItem 参数
+### 自定義系列 renderItem 引數
 
 ```javascript
 renderItem: function(params, api) {
   // params: { context, batch, info }
-  // api.value(dim): 获取数据值
-  // api.coord([x, y]): 数据转像素坐标
-  // api.size([width, height]): 数据宽度转像素
-  // api.theme: 主题配置
-  // api.getWidth(): 画布宽度
-  // api.getHeight(): 画布高度
+  // api.value(dim): 獲取資料值
+  // api.coord([x, y]): 資料轉畫素座標
+  // api.size([width, height]): 資料寬度轉畫素
+  // api.theme: 主題配置
+  // api.getWidth(): 畫布寬度
+  // api.getHeight(): 畫布高度
 
   var categoryIndex = api.value(0);
   var value = api.value(1);
@@ -261,21 +261,21 @@ renderItem: function(params, api) {
 }
 ```
 
-## 数据转换
+## 資料轉換
 
-### Dataset encode 映射
+### Dataset encode 對映
 
 ```javascript
 encode: {
-  x: 0,                        // 第一列映射到x轴
-  y: [1, 2],                   // 第2、3列映射到y轴（多系列）
-  tooltip: [0, 1, 2],          // 提示框显示这些列
-  legend: 1,                   // 图例使用第2列
-  seriesName: [0, 1]           // 系列名称
+  x: 0,                        // 第一列對映到x軸
+  y: [1, 2],                   // 第2、3列對映到y軸（多系列）
+  tooltip: [0, 1, 2],          // 提示框顯示這些列
+  legend: 1,                   // 圖例使用第2列
+  seriesName: [0, 1]           // 系列名稱
 }
 ```
 
-### 数据变换链式调用
+### 資料變換鏈式呼叫
 
 ```javascript
 dataset: [{
@@ -292,16 +292,16 @@ dataset: [{
 }]
 ```
 
-## 注意事项
+## 注意事項
 
-1. **Dataset性能**：复杂变换可能影响性能，大数据量测试后再使用
-2. **DataZoom联动**：多个图表需要设置dataZoomIndex并绑定同一轴
-3. **自定义系列**：renderItem必须返回ZRender图形对象
-4. **Canvas渲染**：自定义系列默认使用canvas渲染
-5. **调试**：使用console.log输出api.value()检查数据映射
+1. **Dataset效能**：複雜變換可能影響效能，大資料量測試後再使用
+2. **DataZoom聯動**：多個圖表需要設定dataZoomIndex並繫結同一軸
+3. **自定義系列**：renderItem必須返回ZRender圖形物件
+4. **Canvas渲染**：自定義系列預設使用canvas渲染
+5. **除錯**：使用console.log輸出api.value()檢查資料對映
 
-## 相关技能
+## 相關技能
 
-- [echart-basic](../echart-basic/SKILL.md) - 基础图表
-- [echart-multi](../echart-multi/SKILL.md) - 多图组合（联动）
-- [echart-finance](../echart-finance/SKILL.md) - 金融图（K线图+DataZoom）
+- [echart-basic](../echart-basic/SKILL.md) - 基礎圖表
+- [echart-multi](../echart-multi/SKILL.md) - 多圖組合（聯動）
+- [echart-finance](../echart-finance/SKILL.md) - 金融圖（K線圖+DataZoom）

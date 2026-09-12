@@ -2,7 +2,7 @@
 name: echart
 version: v1.0.0
 author: skill-factory
-description: Apache ECharts 技能族，掌握折线图、柱状图、饼图、散点图、关系图、地图、K线图等各类图表可视化，适用于数据可视化开发
+description: Apache ECharts 技能族，掌握折線圖、柱狀圖、餅圖、散點圖、關係圖、地圖、K線圖等各類圖表視覺化，適用於資料視覺化開發
 tags: [echarts, visualization, chart, javascript, skill-family]
 ---
 
@@ -10,42 +10,42 @@ tags: [echarts, visualization, chart, javascript, skill-family]
 
 ## 技能族概述
 
-EChart Skills 是 Apache ECharts 技术栈的完整技能族，包含以下子技能：
+EChart Skills 是 Apache ECharts 技術棧的完整技能族，包含以下子技能：
 
-- **echart-basic**：基础图表技能（折线图、柱状图、饼图、散点图）
-- **echart-relation**：关系图技能（关系图、桑基图、树图、旭日图）
-- **echart-statistics**：统计图技能（热力图、盒须图、平行坐标、矩阵）
-- **echart-finance**：金融图技能（K线图、雷达图、仪表盘）
-- **echart-geo**：地理图技能（地图、3D地球、航班图）
-- **echart-3d**：3D图表技能（3D柱状图、3D散点图、3D曲面）
-- **echart-advanced**：高级特性技能（dataset、dataZoom、自定义系列）
-- **echart-multi**：多图组合技能（grid、polar、timeline、联动）
+- **echart-basic**：基礎圖表技能（折線圖、柱狀圖、餅圖、散點圖）
+- **echart-relation**：關係圖技能（關係圖、桑基圖、樹圖、旭日圖）
+- **echart-statistics**：統計圖技能（熱力圖、盒須圖、平行座標、矩陣）
+- **echart-finance**：金融圖技能（K線圖、雷達圖、儀表盤）
+- **echart-geo**：地理圖技能（地圖、3D地球、航班圖）
+- **echart-3d**：3D圖表技能（3D柱狀圖、3D散點圖、3D曲面）
+- **echart-advanced**：高階特性技能（dataset、dataZoom、自定義系列）
+- **echart-multi**：多圖組合技能（grid、polar、timeline、聯動）
 
 ## 子技能列表
 
-| 子技能 | 版本 | 描述 | 依赖 |
+| 子技能 | 版本 | 描述 | 依賴 |
 |--------|------|------|------|
-| echart-basic | v1.0.0 | 基础图表（折线图、柱状图、饼图、散点图） | 无 |
-| echart-relation | v1.0.0 | 关系图（关系图、桑基图、树图、旭日图） | echart-basic |
-| echart-statistics | v1.0.0 | 统计图（热力图、盒须图、平行坐标、矩阵） | echart-basic |
-| echart-finance | v1.0.0 | 金融图（K线图、雷达图、仪表盘） | echart-basic |
-| echart-geo | v1.0.0 | 地理图（地图、3D地球、3D地图） | echart-basic |
-| echart-3d | v1.0.0 | 3D图表（3D柱状图、3D散点图、3D曲面） | echart-basic |
-| echart-advanced | v1.0.0 | 高级特性（dataset、dataZoom、自定义系列） | echart-basic |
-| echart-multi | v1.0.0 | 多图组合（grid、polar、timeline、联动） | 多个基础技能 |
+| echart-basic | v1.0.0 | 基礎圖表（折線圖、柱狀圖、餅圖、散點圖） | 無 |
+| echart-relation | v1.0.0 | 關係圖（關係圖、桑基圖、樹圖、旭日圖） | echart-basic |
+| echart-statistics | v1.0.0 | 統計圖（熱力圖、盒須圖、平行座標、矩陣） | echart-basic |
+| echart-finance | v1.0.0 | 金融圖（K線圖、雷達圖、儀表盤） | echart-basic |
+| echart-geo | v1.0.0 | 地理圖（地圖、3D地球、3D地圖） | echart-basic |
+| echart-3d | v1.0.0 | 3D圖表（3D柱狀圖、3D散點圖、3D曲面） | echart-basic |
+| echart-advanced | v1.0.0 | 高階特性（dataset、dataZoom、自定義系列） | echart-basic |
+| echart-multi | v1.0.0 | 多圖組合（grid、polar、timeline、聯動） | 多個基礎技能 |
 
 ## 使用方式
 
-### 单独使用子技能
+### 單獨使用子技能
 
 ```bash
-# 使用 ECharts 基础图表技能
+# 使用 ECharts 基礎圖表技能
 / Skill echart-basic
 
-# 使用 ECharts 关系图技能
+# 使用 ECharts 關係圖技能
 / Skill echart-relation
 
-# 使用 ECharts 金融图技能
+# 使用 ECharts 金融圖技能
 / Skill echart-finance
 ```
 
@@ -56,14 +56,14 @@ EChart Skills 是 Apache ECharts 技术栈的完整技能族，包含以下子�
 / Skill echart
 ```
 
-## 技能族结构
+## 技能族結構
 
 ```
 echart/
-├── SKILL.md                    # 母技能定义
+├── SKILL.md                    # 母技能定義
 ├── references/
 │   └── overview.md            # 技能族概述
-└── skills/                     # 子技能目录
+└── skills/                     # 子技能目錄
     ├── echart-basic/
     ├── echart-relation/
     ├── echart-statistics/
@@ -74,14 +74,14 @@ echart/
     └── echart-multi/
 ```
 
-## 学习路径
+## 學習路徑
 
-1. **echart-basic**（先学）- 掌握折线图、柱状图、饼图、散点图
-2. **echart-finance** / **echart-statistics**（并行）- 根据需求选择
-3. **echart-relation** / **echart-geo**（并行）- 进阶图表
-4. **echart-advanced** / **echart-multi**（后学）- 高级特性和组合
+1. **echart-basic**（先學）- 掌握折線圖、柱狀圖、餅圖、散點圖
+2. **echart-finance** / **echart-statistics**（並行）- 根據需求選擇
+3. **echart-relation** / **echart-geo**（並行）- 進階圖表
+4. **echart-advanced** / **echart-multi**（後學）- 高階特性和組合
 
-## 版本兼容性
+## 版本相容性
 
 - ECharts 5.0+
 - ECharts GL 1.0+

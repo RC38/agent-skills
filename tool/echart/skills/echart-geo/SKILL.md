@@ -3,56 +3,56 @@ name: echart-geo
 version: v1.0.0
 author: skill-factory
 parent: echart
-description: ECharts 地理图技能，掌握地图、3D地球、航线图等地理坐标可视化，用于区域分析、人口分布和空间分布展示
+description: ECharts 地理圖技能，掌握地圖、3D地球、航線圖等地理座標視覺化，用於區域分析、人口分佈和空間分佈展示
 tags: [echarts, map, geo, globe, flight, geographic, visualization]
 dependency:
   parent: echart
   requires: echart-basic
 ---
 
-# EChart Geo Skill - 地理图技能
+# EChart Geo Skill - 地理圖技能
 
-## 任务目标
+## 任務目標
 
-- **本 Skill 用于**：掌握地理坐标数据可视化（区域分析、空间分布、航线轨迹）
+- **本 Skill 用於**：掌握地理座標資料視覺化（區域分析、空間分佈、航線軌跡）
 - **核心能力**：
-  - 地图：区域数据、地理分区
-  - 3D地球：全球视角、立体分布
-  - 航线图：路径轨迹、连接关系
-- **触发条件**：展示地理位置相关数据时
+  - 地圖：區域資料、地理分割槽
+  - 3D地球：全球視角、立體分佈
+  - 航線圖：路徑軌跡、連線關係
+- **觸發條件**：展示地理位置相關資料時
 
-## 图表类型
+## 圖表型別
 
-### 地图 (Map)
+### 地圖 (Map)
 
-**展示信息**：地理区域上的数据分布
+**展示資訊**：地理區域上的資料分佈
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| geo | 地理坐标系 | 地图配置 |
-| series.data | 数组 | [{name, value}] |
-| map | 地图名称 | 对应GeoJSON |
-| selectedMode | 选择模式 | 'single'/'multiple' |
+| geo | 地理座標系 | 地圖配置 |
+| series.data | 陣列 | [{name, value}] |
+| map | 地圖名稱 | 對應GeoJSON |
+| selectedMode | 選擇模式 | 'single'/'multiple' |
 
-**变量关系**：地理区域名称与数值的映射
+**變數關係**：地理區域名稱與數值的對映
 
-**子类型**：
-- 中国地图/省份地图
-- 世界地图
-- 等值区划图（Choropleth）
-- 散点地图
-- 城市气泡图
-- 自定义地图投影
+**子型別**：
+- 中國地圖/省份地圖
+- 世界地圖
+- 等值區劃圖（Choropleth）
+- 散點地圖
+- 城市氣泡圖
+- 自定義地圖投影
 
 ```javascript
-// 注册地图
+// 註冊地圖
 echarts.registerMap('china', chinaGeoJSON);
 
 option = {
   geo: {
     map: 'china',
-    roam: true,                    // 支持缩放拖拽
+    roam: true,                    // 支援縮放拖拽
     label: { show: true },
     itemStyle: { areaColor: '#eee', borderColor: '#ccc' },
     emphasis: {
@@ -66,31 +66,31 @@ option = {
     data: [
       { name: '北京', value: 100 },
       { name: '上海', value: 80 },
-      { name: '广州', value: 60 }
+      { name: '廣州', value: 60 }
     ]
   }]
 };
 ```
 
-### 散点地图 (Scatter + Geo)
+### 散點地圖 (Scatter + Geo)
 
-**展示信息**：地理位置上的点分布
+**展示資訊**：地理位置上的點分佈
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| geo | 地理坐标系 | 地图配置 |
-| series.type | 'scatter' | 散点图 |
-| series.data | 数组 | [longitude, latitude, value] |
-| symbolSize | 数值/函数 | 点的大小 |
+| geo | 地理座標系 | 地圖配置 |
+| series.type | 'scatter' | 散點圖 |
+| series.data | 陣列 | [longitude, latitude, value] |
+| symbolSize | 數值/函式 | 點的大小 |
 
-**变量关系**：经纬度确定位置，value编码大小/颜色
+**變數關係**：經緯度確定位置，value編碼大小/顏色
 
-**子类型**：
-- 基础散点地图
-- 涟漪特效散点地图（effectScatter）
-- 气泡大小地图
-- 颜色编码地图
+**子型別**：
+- 基礎散點地圖
+- 漣漪特效散點地圖（effectScatter）
+- 氣泡大小地圖
+- 顏色編碼地圖
 
 ```javascript
 option = {
@@ -109,22 +109,22 @@ option = {
 };
 ```
 
-### 热力地图 (Heatmap + Geo)
+### 熱力地圖 (Heatmap + Geo)
 
-**展示信息**：地理区域的热力分布
+**展示資訊**：地理區域的熱力分佈
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| geo | 地理坐标系 | 地图配置 |
-| series.type | 'heatmap' | 热力图 |
-| series.data | 数组 | [lng, lat, value] |
+| geo | 地理座標系 | 地圖配置 |
+| series.type | 'heatmap' | 熱力圖 |
+| series.data | 陣列 | [lng, lat, value] |
 
-**变量关系**：经纬度密度分布
+**變數關係**：經緯度密度分佈
 
-**子类型**：
-- 城市热力分布
-- 人口密度热力图
+**子型別**：
+- 城市熱力分佈
+- 人口密度熱力圖
 
 ```javascript
 option = {
@@ -141,25 +141,25 @@ option = {
 };
 ```
 
-### 航线图 (Lines)
+### 航線圖 (Lines)
 
-**展示信息**：起点到终点的路径轨迹
+**展示資訊**：起點到終點的路徑軌跡
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| series.type | 'lines' | 路径图 |
-| series.data | 数组 | [{coords: [[lng1,lat1], [lng2,lat2]], value}] |
-| polyline | 布尔 | 是否为折线（false=曲线） |
-| effect | 特效配置 | 动画效果 |
+| series.type | 'lines' | 路徑圖 |
+| series.data | 陣列 | [{coords: [[lng1,lat1], [lng2,lat2]], value}] |
+| polyline | 布林 | 是否為折線（false=曲線） |
+| effect | 特效配置 | 動畫效果 |
 
-**变量关系**：起点到终点的弧线连接
+**變數關係**：起點到終點的弧線連線
 
-**子类型**：
-- 基础航线图
-- 3D地球航线图
-- 颜色渐变航线图
-- 动画特效航线图
+**子型別**：
+- 基礎航線圖
+- 3D地球航線圖
+- 顏色漸變航線圖
+- 動畫特效航線圖
 
 ```javascript
 option = {
@@ -179,24 +179,24 @@ option = {
 
 ### 3D地球 (Globe)
 
-**展示信息**：全球视角的立体地理数据
+**展示資訊**：全球視角的立體地理資料
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
 | series.type | 'globe' | 3D地球 |
-| globeRadius | 数值 | 地球半径 |
-| baseTexture | 纹理 | 地球表面纹理 |
-| layers | 图层配置 | 大气层、光照等 |
+| globeRadius | 數值 | 地球半徑 |
+| baseTexture | 紋理 | 地球表面紋理 |
+| layers | 圖層配置 | 大氣層、光照等 |
 
-**变量关系**：三维球面上的数据叠加
+**變數關係**：三維球面上的資料疊加
 
-**子类型**：
-- 基础3D地球
-- 大气层显示
-- 等值线动画地球
+**子型別**：
+- 基礎3D地球
+- 大氣層顯示
+- 等值線動畫地球
 - 地形位移地球
-- 3D柱状图地球
+- 3D柱狀圖地球
 
 ```javascript
 option = {
@@ -218,47 +218,47 @@ option = {
 
 ## 通用配置
 
-### 地理坐标系配置
+### 地理座標系配置
 
 ```javascript
 geo: {
-  map: 'world',                   // 地图名称
-  roam: true,                      // 是否开启鼠标缩放和平移漫游
-  zoom: 1,                         // 当前缩放级别
-  center: [0, 0],                 // 中心点经纬度
-  scaleLimit: { min: 1, max: 8 }, // 缩放限制
+  map: 'world',                   // 地圖名稱
+  roam: true,                      // 是否開啟滑鼠縮放和平移漫遊
+  zoom: 1,                         // 當前縮放級別
+  center: [0, 0],                 // 中心點經緯度
+  scaleLimit: { min: 1, max: 8 }, // 縮放限制
   label: {
-    show: false,                   // 是否显示标签
+    show: false,                   // 是否顯示標籤
     color: '#333'
   },
   itemStyle: {
-    areaColor: '#eee',             // 区域颜色
-    borderColor: '#ccc',           // 边界颜色
+    areaColor: '#eee',             // 區域顏色
+    borderColor: '#ccc',           // 邊界顏色
     borderWidth: 1
   },
-  emphasis: {                      // 高亮状态
+  emphasis: {                      // 高亮狀態
     itemStyle: { areaColor: '#ffd700' },
     label: { show: true }
   }
 }
 ```
 
-### 注册地图
+### 註冊地圖
 
 ```javascript
-// 内置地图
+// 內建地圖
  echarts.registerMap('china', chinaGeoJSON);
  echarts.registerMap('world', worldGeoJSON);
 
-// 从URL加载
+// 從URL載入
 fetch('https://example.com/china.json')
   .then(res => res.json())
   .then(data => echarts.registerMap('china', data));
 ```
 
-## 数据转换
+## 資料轉換
 
-### 经纬度数据转地图散点
+### 經緯度資料轉地圖散點
 
 ```javascript
 function toGeoScatter(locations) {
@@ -269,7 +269,7 @@ function toGeoScatter(locations) {
 }
 ```
 
-### 行政区划数据转等值区划图
+### 行政區劃資料轉等值區劃圖
 
 ```javascript
 function toChoropleth(districtData) {
@@ -280,16 +280,16 @@ function toChoropleth(districtData) {
 }
 ```
 
-## 注意事项
+## 注意事項
 
-1. **地图注册**：使用前必须注册对应GeoJSON
-2. **坐标系**：geo3D用于3D地球散点/柱状/航线
-3. **数据格式**：经纬度顺序是 [lng, lat] 不是 [lat, lng]
-4. **漫游限制**：设置scaleLimit防止过度缩放
-5. **性能**：大数据量散点使用 effectScatter 而非普通 scatter
+1. **地圖註冊**：使用前必須註冊對應GeoJSON
+2. **座標系**：geo3D用於3D地球散點/柱狀/航線
+3. **資料格式**：經緯度順序是 [lng, lat] 不是 [lat, lng]
+4. **漫遊限制**：設定scaleLimit防止過度縮放
+5. **效能**：大資料量散點使用 effectScatter 而非普通 scatter
 
-## 相关技能
+## 相關技能
 
-- [echart-basic](../echart-basic/SKILL.md) - 基础图表
-- [echart-3d](../echart-3d/SKILL.md) - 3D图表
-- [echart-multi](../echart-multi/SKILL.md) - 多图组合（地图+散点+航线叠加）
+- [echart-basic](../echart-basic/SKILL.md) - 基礎圖表
+- [echart-3d](../echart-3d/SKILL.md) - 3D圖表
+- [echart-multi](../echart-multi/SKILL.md) - 多圖組合（地圖+散點+航線疊加）

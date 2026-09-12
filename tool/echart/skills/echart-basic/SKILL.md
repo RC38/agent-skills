@@ -3,48 +3,48 @@ name: echart-basic
 version: v1.0.0
 author: skill-factory
 parent: echart
-description: ECharts 基础图表技能，掌握折线图、柱状图、饼图、散点图的配置和用法，包含数据系列、坐标轴、样式定制等
+description: ECharts 基礎圖表技能，掌握折線圖、柱狀圖、餅圖、散點圖的配置和用法，包含資料系列、座標軸、樣式定製等
 tags: [echarts, line, bar, pie, scatter, basic, chart]
 dependency:
   parent: echart
   requires: null
 ---
 
-# EChart Basic Skill - 基础图表技能
+# EChart Basic Skill - 基礎圖表技能
 
-## 任务目标
+## 任務目標
 
-- **本 Skill 用于**：掌握 ECharts 基础图表（折线图、柱状图、饼图、散点图）的配置和使用
+- **本 Skill 用於**：掌握 ECharts 基礎圖表（折線圖、柱狀圖、餅圖、散點圖）的配置和使用
 - **核心能力**：
-  - 折线图：趋势变化、对比分析
-  - 柱状图：分类对比、数量统计
-  - 饼图：占比分析、分布统计
-  - 散点图：相关性分析、多维度分布
-- **触发条件**：需要展示基础数据可视化时
+  - 折線圖：趨勢變化、對比分析
+  - 柱狀圖：分類對比、數量統計
+  - 餅圖：佔比分析、分佈統計
+  - 散點圖：相關性分析、多維度分佈
+- **觸發條件**：需要展示基礎資料視覺化時
 
-## 图表类型
+## 圖表型別
 
-### 折线图 (Line Chart)
+### 折線圖 (Line Chart)
 
-**展示信息**：数据随时间/类目的变化趋势
+**展示資訊**：資料隨時間/類目的變化趨勢
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| xAxis | 类目轴/数值轴 | 横坐标 |
-| yAxis | 数值轴 | 纵坐标 |
-| series.data | 数组 | 每个点的数值 |
+| xAxis | 類目軸/數值軸 | 橫座標 |
+| yAxis | 數值軸 | 縱座標 |
+| series.data | 陣列 | 每個點的數值 |
 
-**变量关系**：x轴与y轴一一对应，支持多系列对比
+**變數關係**：x軸與y軸一一對應，支援多系列對比
 
-**子类型**：
-- 基础折线图
-- 平滑折线图 (smooth)
-- 面积图 (areaStyle)
-- 堆叠折线图 (stack)
-- 渐变面积图
-- 阶梯折线图 (step)
-- 多X轴折线图
+**子型別**：
+- 基礎折線圖
+- 平滑折線圖 (smooth)
+- 面積圖 (areaStyle)
+- 堆疊折線圖 (stack)
+- 漸變面積圖
+- 階梯折線圖 (step)
+- 多X軸折線圖
 
 ```javascript
 option = {
@@ -59,26 +59,26 @@ option = {
 };
 ```
 
-### 柱状图 (Bar Chart)
+### 柱狀圖 (Bar Chart)
 
-**展示信息**：不同类目的数值对比
+**展示資訊**：不同類目的數值對比
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| xAxis | 类目轴 | 横坐标 |
-| yAxis | 数值轴 | 纵坐标 |
-| series.data | 数组 | 每个柱子的数值 |
+| xAxis | 類目軸 | 橫座標 |
+| yAxis | 數值軸 | 縱座標 |
+| series.data | 陣列 | 每個柱子的數值 |
 
-**变量关系**：x轴类目与y轴数值一一对应
+**變數關係**：x軸類目與y軸數值一一對應
 
-**子类型**：
-- 基础柱状图
-- 堆叠柱状图 (stack)
-- 环形柱状图 (barWidth + radius)
-- 瀑布图
-- 南北对比柱状图
-- 极坐标柱状图
+**子型別**：
+- 基礎柱狀圖
+- 堆疊柱狀圖 (stack)
+- 環形柱狀圖 (barWidth + radius)
+- 瀑布圖
+- 南北對比柱狀圖
+- 極座標柱狀圖
 
 ```javascript
 option = {
@@ -92,26 +92,26 @@ option = {
 };
 ```
 
-### 饼图 (Pie Chart)
+### 餅圖 (Pie Chart)
 
-**展示信息**：部分与整体的比例关系
+**展示資訊**：部分與整體的比例關係
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| series.data | 对象数组 | [{name: 'A', value: 100}] |
-| radius | 数值/数组 | 半径 |
-| center | 数组 | 圆心位置 |
+| series.data | 物件陣列 | [{name: 'A', value: 100}] |
+| radius | 數值/陣列 | 半徑 |
+| center | 陣列 | 圓心位置 |
 
-**变量关系**：各数据项之和为整体
+**變數關係**：各資料項之和為整體
 
-**子类型**：
-- 基础饼图
-- 环形图 (radius: ['40%', '70%'])
-- 南丁格尔玫瑰图 (roseType: 'area')
-- 半环形图
-- 嵌套饼图
-- 富文本标签饼图
+**子型別**：
+- 基礎餅圖
+- 環形圖 (radius: ['40%', '70%'])
+- 南丁格爾玫瑰圖 (roseType: 'area')
+- 半環形圖
+- 巢狀餅圖
+- 富文字標籤餅圖
 
 ```javascript
 option = {
@@ -128,27 +128,27 @@ option = {
 };
 ```
 
-### 散点图 (Scatter Chart)
+### 散點圖 (Scatter Chart)
 
-**展示信息**：两个数值变量的相关性，多维度分布
+**展示資訊**：兩個數值變數的相關性，多維度分佈
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| xAxis | 数值轴 | 横坐标 |
-| yAxis | 数值轴 | 纵坐标 |
-| series.data | 二维数组/对象 | [x, y] 或 [x, y, size] |
-| symbolSize | 数值/函数 | 点的大小 |
-| visualMap | 视觉映射 | 颜色编码第三维度 |
+| xAxis | 數值軸 | 橫座標 |
+| yAxis | 數值軸 | 縱座標 |
+| series.data | 二維陣列/物件 | [x, y] 或 [x, y, size] |
+| symbolSize | 數值/函式 | 點的大小 |
+| visualMap | 視覺對映 | 顏色編碼第三維度 |
 
-**变量关系**：x与y的相关性，size编码额外维度
+**變數關係**：x與y的相關性，size編碼額外維度
 
-**子类型**：
-- 基础散点图
-- 气泡图 (size编码第三维)
-- 涟漪特效散点图 (effectScatter)
-- 大规模散点图
-- 回归散点图 (线性/多项式/对数)
+**子型別**：
+- 基礎散點圖
+- 氣泡圖 (size編碼第三維)
+- 漣漪特效散點圖 (effectScatter)
+- 大規模散點圖
+- 迴歸散點圖 (線性/多項式/對數)
 
 ```javascript
 option = {
@@ -165,18 +165,18 @@ option = {
 
 ## 通用配置
 
-### 坐标轴配置
+### 座標軸配置
 
 ```javascript
 xAxis: {
-  type: 'category',  // 类目轴
-  data: ['类目1', '类目2', '类目3']
+  type: 'category',  // 類目軸
+  data: ['類目1', '類目2', '類目3']
 },
 yAxis: {
-  type: 'value',     // 数值轴
+  type: 'value',     // 數值軸
   min: 0,            // 最小值
   max: 100,          // 最大值
-  splitNumber: 5     // 分割段数
+  splitNumber: 5     // 分割段數
 }
 ```
 
@@ -184,13 +184,13 @@ yAxis: {
 
 ```javascript
 series: [{
-  type: 'line',      // 图表类型
-  name: '系列名称',   // 系列名
-  data: [...],       // 数据
-  itemStyle: {        // 样式
+  type: 'line',      // 圖表型別
+  name: '系列名稱',   // 系列名
+  data: [...],       // 資料
+  itemStyle: {        // 樣式
     color: '#5470C6'
   },
-  emphasis: {        // 高亮状态
+  emphasis: {        // 高亮狀態
     itemStyle: { shadowBlur: 10 }
   }
 }]
@@ -207,15 +207,15 @@ tooltip: {
 }
 ```
 
-## 数据格式
+## 資料格式
 
-### 数组格式
+### 陣列格式
 
 ```javascript
-data: [120, 200, 150]  // 简单数值数组
+data: [120, 200, 150]  // 簡單數值陣列
 ```
 
-### 对象数组格式
+### 物件陣列格式
 
 ```javascript
 data: [
@@ -224,7 +224,7 @@ data: [
 ]
 ```
 
-### 多维数组格式
+### 多維陣列格式
 
 ```javascript
 data: [
@@ -233,15 +233,15 @@ data: [
 ]
 ```
 
-## 样式定制
+## 樣式定製
 
-### 颜色
+### 顏色
 
 ```javascript
 color: ['#5470C6', '#91CC75', '#FAC858', '#EE6666']
 ```
 
-### 文字样式
+### 文字樣式
 
 ```javascript
 textStyle: {
@@ -251,7 +251,7 @@ textStyle: {
 }
 ```
 
-### 图形样式
+### 圖形樣式
 
 ```javascript
 itemStyle: {
@@ -263,16 +263,16 @@ itemStyle: {
 }
 ```
 
-## 注意事项
+## 注意事項
 
-1. **数据量**：超过1000个数据点考虑使用 dataZoom 或采样
-2. **坐标轴类型**：时间数据用 'time' 类型，类目用 'category'
-3. **饼图标签**：避免标签过多导致重叠，使用引导线或富文本
-4. **散点大小**：symbolSize 函数要控制好返回值范围
-5. **动画**：大数据量时考虑关闭动画 (animation: false)
+1. **資料量**：超過1000個資料點考慮使用 dataZoom 或取樣
+2. **座標軸型別**：時間資料用 'time' 型別，類目用 'category'
+3. **餅圖示籤**：避免標籤過多導致重疊，使用引導線或富文字
+4. **散點大小**：symbolSize 函式要控制好返回值範圍
+5. **動畫**：大資料量時考慮關閉動畫 (animation: false)
 
-## 相关技能
+## 相關技能
 
-- [echart-finance](../echart-finance/SKILL.md) - 金融图表（K线图、雷达图）
-- [echart-multi](../echart-multi/SKILL.md) - 多图组合（grid叠加）
-- [echart-advanced](../echart-advanced/SKILL.md) - 高级特性（dataset数据处理）
+- [echart-finance](../echart-finance/SKILL.md) - 金融圖表（K線圖、雷達圖）
+- [echart-multi](../echart-multi/SKILL.md) - 多圖組合（grid疊加）
+- [echart-advanced](../echart-advanced/SKILL.md) - 高階特性（dataset資料處理）

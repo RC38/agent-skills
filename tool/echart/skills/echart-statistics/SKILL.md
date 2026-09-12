@@ -3,48 +3,48 @@ name: echart-statistics
 version: v1.0.0
 author: skill-factory
 parent: echart
-description: ECharts 统计图技能，掌握热力图、盒须图、平行坐标、矩阵等统计型图表，用于分布分析、多维对比和模式识别
+description: ECharts 統計圖技能，掌握熱力圖、盒須圖、平行座標、矩陣等統計型圖表，用於分佈分析、多維對比和模式識別
 tags: [echarts, heatmap, boxplot, parallel, matrix, statistics]
 dependency:
   parent: echart
   requires: echart-basic
 ---
 
-# EChart Statistics Skill - 统计图技能
+# EChart Statistics Skill - 統計圖技能
 
-## 任务目标
+## 任務目標
 
-- **本 Skill 用于**：掌握统计型数据可视化（分布分析、多维对比、模式识别）
+- **本 Skill 用於**：掌握統計型資料視覺化（分佈分析、多維對比、模式識別）
 - **核心能力**：
-  - 热力图：密度分析、模式识别
-  - 盒须图：分布统计、异常检测
-  - 平行坐标：多维分析、聚类识别
-  - 矩阵：相关性分析、对比矩阵
-- **触发条件**：展示统计数据分布、多维度对比时
+  - 熱力圖：密度分析、模式識別
+  - 盒須圖：分佈統計、異常檢測
+  - 平行座標：多維分析、聚類識別
+  - 矩陣：相關性分析、對比矩陣
+- **觸發條件**：展示統計資料分佈、多維度對比時
 
-## 图表类型
+## 圖表型別
 
-### 热力图 (Heatmap)
+### 熱力圖 (Heatmap)
 
-**展示信息**：二维数据的密度/强度分布
+**展示資訊**：二維資料的密度/強度分佈
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| xAxis | 类目轴/数值轴 | 横坐标 |
-| yAxis | 类目轴/数值轴 | 纵坐标 |
-| series.data | 二维数组 | [[x, y, value], ...] |
-| visualMap | 视觉映射 | 颜色渐变 |
-| label | 标签配置 | 是否显示数值 |
+| xAxis | 類目軸/數值軸 | 橫座標 |
+| yAxis | 類目軸/數值軸 | 縱座標 |
+| series.data | 二維陣列 | [[x, y, value], ...] |
+| visualMap | 視覺對映 | 顏色漸變 |
+| label | 標籤配置 | 是否顯示數值 |
 
-**变量关系**：x和y确定位置，value确定颜色/强度
+**變數關係**：x和y確定位置，value確定顏色/強度
 
-**子类型**：
-- 笛卡尔坐标系热力图
-- 散点热力图（基于地理/极坐标）
-- 日历热力图
-- 颜色离散映射热力图
-- 大规模热力图
+**子型別**：
+- 笛卡爾座標系熱力圖
+- 散點熱力圖（基於地理/極座標）
+- 日曆熱力圖
+- 顏色離散對映熱力圖
+- 大規模熱力圖
 
 ```javascript
 option = {
@@ -60,24 +60,24 @@ option = {
 };
 ```
 
-### 盒须图 (Boxplot)
+### 盒須圖 (Boxplot)
 
-**展示信息**：数据的统计分布（中位数、四分位、异常点）
+**展示資訊**：資料的統計分佈（中位數、四分位、異常點）
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| xAxis | 类目轴 | 横坐标（每个类目一个盒须图） |
-| yAxis | 数值轴 | 纵坐标 |
-| series.data | 五维数组 | [min, Q1, median, Q3, max] |
-| outlier | 异常点数组 | 超出须的范围的点 |
+| xAxis | 類目軸 | 橫座標（每個類目一個盒須圖） |
+| yAxis | 數值軸 | 縱座標 |
+| series.data | 五維陣列 | [min, Q1, median, Q3, max] |
+| outlier | 異常點陣列 | 超出須的範圍的點 |
 
-**变量关系**：展示数据的统计特征分布
+**變數關係**：展示資料的統計特徵分佈
 
-**子类型**：
-- 水平盒须图
-- 多系列盒须图
-- 带异常点的盒须图
+**子型別**：
+- 水平盒須圖
+- 多系列盒須圖
+- 帶異常點的盒須圖
 
 ```javascript
 option = {
@@ -94,30 +94,30 @@ option = {
 };
 ```
 
-### 平行坐标 (Parallel)
+### 平行座標 (Parallel)
 
-**展示信息**：多维度数据的并行对比
+**展示資訊**：多維度資料的並行對比
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| parallelAxis | 平行轴数组 | 每个维度的配置 |
-| parallel | 坐标系配置 | 平行坐标系的布局 |
-| series.data | 多维数组 | [dim1, dim2, dim3, ...] |
+| parallelAxis | 平行軸陣列 | 每個維度的配置 |
+| parallel | 座標系配置 | 平行座標系的佈局 |
+| series.data | 多維陣列 | [dim1, dim2, dim3, ...] |
 
-**变量关系**：同一数据点在各维度上的取值
+**變數關係**：同一資料點在各維度上的取值
 
-**子类型**：
-- 基础平行坐标图
-- AQI分布平行坐标
-- 营养结构平行坐标
+**子型別**：
+- 基礎平行座標圖
+- AQI分佈平行座標
+- 營養結構平行座標
 
 ```javascript
 option = {
   parallelAxis: [
     { dim: 0, name: '密度' },
-    { dim: 1, name: '价格' },
-    { dim: 2, name: '评分' }
+    { dim: 1, name: '價格' },
+    { dim: 2, name: '評分' }
   ],
   parallel: { left: '5%', right: '10%', bottom: '10%', top: '20%' },
   series: [{
@@ -132,26 +132,26 @@ option = {
 };
 ```
 
-### 矩阵 (Matrix)
+### 矩陣 (Matrix)
 
-**展示信息**：行列交叉数据、相关性矩阵
+**展示資訊**：行列交叉資料、相關性矩陣
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| xAxis | 类目轴 | 列 |
-| yAxis | 类目轴 | 行 |
-| series.data | 二维数组 | [[row, col, value], ...] |
-| visualMap | 视觉映射 | 颜色编码 |
+| xAxis | 類目軸 | 列 |
+| yAxis | 類目軸 | 行 |
+| series.data | 二維陣列 | [[row, col, value], ...] |
+| visualMap | 視覺對映 | 顏色編碼 |
 
-**变量关系**：行与列的交叉点值
+**變數關係**：行與列的交叉點值
 
-**子类型**：
-- 相关矩阵（热力图形式）
-- 混淆矩阵
-- 协方差矩阵
-- 股市矩阵图
-- 元素周期表
+**子型別**：
+- 相關矩陣（熱力圖形式）
+- 混淆矩陣
+- 協方差矩陣
+- 股市矩陣圖
+- 元素週期表
 
 ```javascript
 option = {
@@ -169,7 +169,7 @@ option = {
 
 ## 通用配置
 
-### 视觉映射 (VisualMap)
+### 視覺對映 (VisualMap)
 
 ```javascript
 visualMap: {
@@ -178,18 +178,18 @@ visualMap: {
   calculable: true,                 // 是否可拖拽
   orient: 'vertical',              // 方向
   left: 'right',                   // 位置
-  inRange: {                        // 颜色范围
+  inRange: {                        // 顏色範圍
     color: ['#50a3ba', '#eac736', '#d94e5d']
   },
   textStyle: { color: '#333' }
 }
 ```
 
-### 标签配置
+### 標籤配置
 
 ```javascript
 label: {
-  show: true,                      // 显示标签
+  show: true,                      // 顯示標籤
   position: 'top',                 // 位置
   formatter: '{c}',                // 格式化
   fontSize: 12,
@@ -197,7 +197,7 @@ label: {
 }
 ```
 
-### 高亮状态
+### 高亮狀態
 
 ```javascript
 emphasis: {
@@ -209,9 +209,9 @@ emphasis: {
 }
 ```
 
-## 数据转换
+## 資料轉換
 
-### 原始数据转热力图
+### 原始資料轉熱力圖
 
 ```javascript
 function toHeatmapData(rawData, xField, yField, valueField) {
@@ -223,7 +223,7 @@ function toHeatmapData(rawData, xField, yField, valueField) {
 }
 ```
 
-### 统计结果转盒须图
+### 統計結果轉盒須圖
 
 ```javascript
 function toBoxplotData(statData) {
@@ -239,16 +239,16 @@ function toBoxplotData(statData) {
 }
 ```
 
-## 注意事项
+## 注意事項
 
-1. **热力图颜色**：选择合适的颜色渐变突出重点区域
-2. **盒须图数据**：确保数据已正确计算五个统计量
-3. **平行坐标**：维度过多时考虑降维或筛选
-4. **矩阵排序**：行列可按相似性排序发现模式
-5. **大规模数据**：超过5000点考虑采样或聚合
+1. **熱力圖顏色**：選擇合適的顏色漸變突出重點區域
+2. **盒須圖資料**：確保資料已正確計算五個統計量
+3. **平行座標**：維度過多時考慮降維或篩選
+4. **矩陣排序**：行列可按相似性排序發現模式
+5. **大規模資料**：超過5000點考慮取樣或聚合
 
-## 相关技能
+## 相關技能
 
-- [echart-basic](../echart-basic/SKILL.md) - 基础图表
-- [echart-multi](../echart-multi/SKILL.md) - 多图组合
-- [echart-advanced](../echart-advanced/SKILL.md) - 高级特性（dataset聚合）
+- [echart-basic](../echart-basic/SKILL.md) - 基礎圖表
+- [echart-multi](../echart-multi/SKILL.md) - 多圖組合
+- [echart-advanced](../echart-advanced/SKILL.md) - 高階特性（dataset聚合）

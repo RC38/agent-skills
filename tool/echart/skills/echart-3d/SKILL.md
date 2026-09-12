@@ -3,48 +3,48 @@ name: echart-3d
 version: v1.0.0
 author: skill-factory
 parent: echart
-description: ECharts 3D图表技能，掌握3D柱状图、3D散点图、3D曲面等三维可视化，用于立体对比、空间分布和曲面分析
+description: ECharts 3D圖表技能，掌握3D柱狀圖、3D散點圖、3D曲面等三維視覺化，用於立體對比、空間分佈和曲面分析
 tags: [echarts, bar3D, scatter3D, surface3D, line3D, 3D, visualization]
 dependency:
   parent: echart
   requires: echart-basic
 ---
 
-# EChart 3D Skill - 3D图表技能
+# EChart 3D Skill - 3D圖表技能
 
-## 任务目标
+## 任務目標
 
-- **本 Skill 用于**：掌握三维数据可视化（立体对比、空间分布、曲面分析）
+- **本 Skill 用於**：掌握三維資料視覺化（立體對比、空間分佈、曲面分析）
 - **核心能力**：
-  - 3D柱状图：三维柱形对比
-  - 3D散点图：空间三维分布
-  - 3D曲面：连续曲面拟合
-  - 3D路径图：空间轨迹
-- **触发条件**：需要展示三维数据或立体可视化时
+  - 3D柱狀圖：三維柱形對比
+  - 3D散點圖：空間三維分佈
+  - 3D曲面：連續曲面擬合
+  - 3D路徑圖：空間軌跡
+- **觸發條件**：需要展示三維資料或立體視覺化時
 
-## 图表类型
+## 圖表型別
 
-### 3D柱状图 (Bar3D)
+### 3D柱狀圖 (Bar3D)
 
-**展示信息**：三维坐标系中的柱形对比
+**展示資訊**：三維座標系中的柱形對比
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| grid3D | 三维坐标系 | x、y、z轴配置 |
-| xAxis3D | 类目/数值轴 | x轴 |
-| yAxis3D | 类目/数值轴 | y轴 |
-| zAxis3D | 数值轴 | z轴（高度） |
-| series.data | 三维数组 | [x, y, z] |
+| grid3D | 三維座標系 | x、y、z軸配置 |
+| xAxis3D | 類目/數值軸 | x軸 |
+| yAxis3D | 類目/數值軸 | y軸 |
+| zAxis3D | 數值軸 | z軸（高度） |
+| series.data | 三維陣列 | [x, y, z] |
 
-**变量关系**：x、y确定底面位置，z确定高度
+**變數關係**：x、y確定底面位置，z確定高度
 
-**子类型**：
-- 基础3D柱状图
-- 全球人口3D柱状图
-- 3D堆叠柱状图
-- 透明3D柱状图
-- 3D柱状图+地球
+**子型別**：
+- 基礎3D柱狀圖
+- 全球人口3D柱狀圖
+- 3D堆疊柱狀圖
+- 透明3D柱狀圖
+- 3D柱狀圖+地球
 
 ```javascript
 option = {
@@ -67,25 +67,25 @@ option = {
 };
 ```
 
-### 3D散点图 (Scatter3D)
+### 3D散點圖 (Scatter3D)
 
-**展示信息**：三维空间中的点分布
+**展示資訊**：三維空間中的點分佈
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| grid3D | 三维坐标系 | 坐标轴配置 |
-| series.data | 四维数组 | [x, y, z, value] |
-| symbolSize | 数值/函数 | 点的大小 |
-| visualMap | 视觉映射 | 颜色编码第四维 |
+| grid3D | 三維座標系 | 座標軸配置 |
+| series.data | 四維陣列 | [x, y, z, value] |
+| symbolSize | 數值/函式 | 點的大小 |
+| visualMap | 視覺對映 | 顏色編碼第四維 |
 
-**变量关系**：x、y、z确定位置，value编码颜色/大小
+**變數關係**：x、y、z確定位置，value編碼顏色/大小
 
-**子类型**：
-- 基础3D散点图
-- 全球人口3D散点图
-- 正交投影3D散点图
-- 3D散点+散点矩阵
+**子型別**：
+- 基礎3D散點圖
+- 全球人口3D散點圖
+- 正交投影3D散點圖
+- 3D散點+散點矩陣
 
 ```javascript
 option = {
@@ -108,22 +108,22 @@ option = {
 
 ### 3D曲面 (Surface)
 
-**展示信息**：连续曲面的拟合和展示
+**展示資訊**：連續曲面的擬合和展示
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| grid3D | 三维坐标系 | 坐标系配置 |
-| series.type | 'surface' | 曲面图 |
-| series.data | 三维矩阵 | height Matrix |
-| series.surface公式 | 函数 | 自定义曲面方程 |
+| grid3D | 三維座標系 | 座標系配置 |
+| series.type | 'surface' | 曲面圖 |
+| series.data | 三維矩陣 | height Matrix |
+| series.surface公式 | 函式 | 自定義曲面方程 |
 
-**变量关系**：x、y确定平面位置，z确定高度
+**變數關係**：x、y確定平面位置，z確定高度
 
-**子类型**：
-- 参数曲面
-- 球面参数曲面
-- 金属曲面
+**子型別**：
+- 引數曲面
+- 球面引數曲面
+- 金屬曲面
 - 玫瑰曲面
 - 波形曲面
 
@@ -148,23 +148,23 @@ option = {
 };
 ```
 
-### 3D路径图 (Lines3D)
+### 3D路徑圖 (Lines3D)
 
-**展示信息**：三维空间中的轨迹路径
+**展示資訊**：三維空間中的軌跡路徑
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| globe3D | 地球坐标系 | 用于地球轨迹 |
-| series.type | 'lines3D' | 3D路径图 |
-| series.data | 数组 | [{coords: [[lng1,lat1,h1], [lng2,lat2,h2]]}] |
+| globe3D | 地球座標系 | 用於地球軌跡 |
+| series.type | 'lines3D' | 3D路徑圖 |
+| series.data | 陣列 | [{coords: [[lng1,lat1,h1], [lng2,lat2,h2]]}] |
 
-**变量关系**：起点到终点的三维轨迹
+**變數關係**：起點到終點的三維軌跡
 
-**子类型**：
-- 地球航线图
-- 3D路径动画
-- 飞线效果
+**子型別**：
+- 地球航線圖
+- 3D路徑動畫
+- 飛線效果
 
 ```javascript
 option = {
@@ -191,18 +191,18 @@ option = {
 
 ## 通用配置
 
-### 三维坐标系配置
+### 三維座標系配置
 
 ```javascript
 grid3D: {
   viewControl: {
     projection: 'perspective',   // 'perspective' | 'orthographic'
-    autoRotate: true,             // 自动旋转
-    autoRotateSpeed: 30,          // 旋转速度
-    distance: 100,                // 视角距离
-    alpha: 40,                    // 视角绕x轴旋转角度
-    beta: 40,                     // 视角绕y轴旋转角度
-    center: [0, 0, 0]             // 中心点
+    autoRotate: true,             // 自動旋轉
+    autoRotateSpeed: 30,          // 旋轉速度
+    distance: 100,                // 視角距離
+    alpha: 40,                    // 視角繞x軸旋轉角度
+    beta: 40,                     // 視角繞y軸旋轉角度
+    center: [0, 0, 0]             // 中心點
   },
   light: {
     main: {
@@ -218,7 +218,7 @@ grid3D: {
 }
 ```
 
-### 材质和渲染
+### 材質和渲染
 
 ```javascript
 itemStyle: {
@@ -234,16 +234,16 @@ realisticMaterial: {
 }
 ```
 
-## 注意事项
+## 注意事項
 
-1. **ECharts GL**：3D图表需要引入 ECharts GL 组件
-2. **性能**：3D图表性能消耗大，数据量过大会卡顿
-3. **视角控制**：使用viewControl配置交互
-4. **光照**：复杂场景需要配置光源避免黑面
-5. **兼容**：部分浏览器可能不支持WebGL
+1. **ECharts GL**：3D圖表需要引入 ECharts GL 元件
+2. **效能**：3D圖表效能消耗大，資料量過大會卡頓
+3. **視角控制**：使用viewControl配置互動
+4. **光照**：複雜場景需要配置光源避免黑麵
+5. **相容**：部分瀏覽器可能不支援WebGL
 
-## 相关技能
+## 相關技能
 
-- [echart-basic](../echart-basic/SKILL.md) - 基础图表
-- [echart-geo](../echart-geo/SKILL.md) - 地理图
-- [echart-multi](../echart-multi/SKILL.md) - 多图组合
+- [echart-basic](../echart-basic/SKILL.md) - 基礎圖表
+- [echart-geo](../echart-geo/SKILL.md) - 地理圖
+- [echart-multi](../echart-multi/SKILL.md) - 多圖組合

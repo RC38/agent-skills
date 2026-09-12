@@ -3,47 +3,47 @@ name: echart-multi
 version: v1.0.0
 author: skill-factory
 parent: echart
-description: ECharts 多图组合技能，掌握grid、polar、timeline、联动等组合图表技术，用于多维度数据对比和复杂可视化场景
+description: ECharts 多圖組合技能，掌握grid、polar、timeline、聯動等組合圖表技術，用於多維度資料對比和複雜視覺化場景
 tags: [echarts, grid, polar, timeline, connect, combination, multi-chart]
 dependency:
   parent: echart
   requires: echart-basic
 ---
 
-# EChart Multi Skill - 多图组合技能
+# EChart Multi Skill - 多圖組合技能
 
-## 任务目标
+## 任務目標
 
-- **本 Skill 用于**：掌握多图表组合技术（坐标系叠加、时间轴联动、图表联动）
+- **本 Skill 用於**：掌握多圖表組合技術（座標系疊加、時間軸聯動、圖表聯動）
 - **核心能力**：
-  - Grid组合：多2D图表并排/叠加
-  - Polar组合：极坐标下多图表叠加
-  - Timeline组合：时间轴驱动的动态切换
-  - 联动(Connect)：多图表同步操作
-- **触发条件**：需要展示多维度对比、复杂可视化、动态数据时
+  - Grid組合：多2D圖表並排/疊加
+  - Polar組合：極座標下多圖表疊加
+  - Timeline組合：時間軸驅動的動態切換
+  - 聯動(Connect)：多圖表同步操作
+- **觸發條件**：需要展示多維度對比、複雜視覺化、動態資料時
 
-## 图表类型
+## 圖表型別
 
-### Grid 组合
+### Grid 組合
 
-**展示信息**：多个2D图表共享坐标系或并排显示
+**展示資訊**：多個2D圖表共享座標系或並排顯示
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| grid | 坐标系数组 | 多个grid区域 |
-| xAxis | 多轴配置 | 多个x轴 |
-| yAxis | 多轴配置 | 多个y轴 |
-| series | 多系列 | 分布在不同grid |
+| grid | 座標系陣列 | 多個grid區域 |
+| xAxis | 多軸配置 | 多個x軸 |
+| yAxis | 多軸配置 | 多個y軸 |
+| series | 多系列 | 分佈在不同grid |
 
-**变量关系**：共享或独立的坐标系统
+**變數關係**：共享或獨立的座標系統
 
-**子类型**：
+**子型別**：
 - 上下排列（多行grid）
 - 左右排列（多列grid）
-- 共享x轴的双y轴图
-- 折线柱状混合图
-- 多X轴图
+- 共享x軸的雙y軸圖
+- 折線柱狀混合圖
+- 多X軸圖
 
 ```javascript
 option = {
@@ -66,25 +66,25 @@ option = {
 };
 ```
 
-### Polar 组合
+### Polar 組合
 
-**展示信息**：极坐标下的多图表叠加
+**展示資訊**：極座標下的多圖表疊加
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| polar | 极坐标系 | 极坐标配置 |
-| radiusAxis | 径向轴 | 半径轴 |
-| angleAxis | 角度轴 | 角度轴 |
-| series | 多个系列 | 叠加在同一极坐标 |
+| polar | 極座標系 | 極座標配置 |
+| radiusAxis | 徑向軸 | 半徑軸 |
+| angleAxis | 角度軸 | 角度軸 |
+| series | 多個系列 | 疊加在同一極座標 |
 
-**变量关系**：共享极坐标中心
+**變數關係**：共享極座標中心
 
-**子类型**：
-- 柱状图+折线图+饼图叠加
-- 极坐标散点图
-- 雷达图（polar的特殊形式）
-- 南极鱼玫瑰图（极坐标面积图）
+**子型別**：
+- 柱狀圖+折線圖+餅圖疊加
+- 極座標散點圖
+- 雷達圖（polar的特殊形式）
+- 南極魚玫瑰圖（極座標面積圖）
 
 ```javascript
 option = {
@@ -113,29 +113,29 @@ option = {
 };
 ```
 
-### Timeline 时间轴
+### Timeline 時間軸
 
-**展示信息**：时间轴驱动的数据动态切换
+**展示資訊**：時間軸驅動的資料動態切換
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| timeline | 时间轴配置 | 自动播放控制 |
-| options | 选项数组 | 每个时间点的配置 |
-| currentIndex | 当前索引 | 当前显示的时间点 |
+| timeline | 時間軸配置 | 自動播放控制 |
+| options | 選項陣列 | 每個時間點的配置 |
+| currentIndex | 當前索引 | 當前顯示的時間點 |
 
-**变量关系**：时间点与数据配置的映射
+**變數關係**：時間點與資料配置的對映
 
-**子类型**：
-- 动态折线图（数据随时间变化）
-- 动态柱状图排名
-- 动态地图数据
-- 自定义时间轴
+**子型別**：
+- 動態折線圖（資料隨時間變化）
+- 動態柱狀圖排名
+- 動態地圖資料
+- 自定義時間軸
 
 ```javascript
 option = {
   baseOption: {
-    title: { text: '动态数据展示' },
+    title: { text: '動態資料展示' },
     xAxis: { type: 'category', data: ['A', 'B', 'C', 'D'] },
     yAxis: { type: 'value' },
     series: [{ type: 'bar', data: [] }]
@@ -154,26 +154,26 @@ option = {
 };
 ```
 
-### 联动 (Connect)
+### 聯動 (Connect)
 
-**展示信息**：多个图表同步操作
+**展示資訊**：多個圖表同步操作
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| echarts.connect | 连接组 | 将多个图表关联 |
-| group | 组标识 | 连接组的ID |
+| echarts.connect | 連線組 | 將多個圖表關聯 |
+| group | 組標識 | 連線組的ID |
 
-**变量关系**：同一组的图表共享交互状态
+**變數關係**：同一組的圖表共享互動狀態
 
-**子类型**：
-- 刷选联动
-- 缩放联动
-- 提示框联动
-- 图例联动
+**子型別**：
+- 刷選聯動
+- 縮放聯動
+- 提示框聯動
+- 圖例聯動
 
 ```javascript
-// 方式1：直接连接
+// 方式1：直接連線
 echarts.connect('dashboard');
 
 // 方式2：使用bindGroup
@@ -183,22 +183,22 @@ chart1.group = 'dashboard';
 chart2.group = 'dashboard';
 echarts.connect('dashboard');
 
-// 断开连接
+// 斷開連線
 echarts.disConnect('dashboard');
 ```
 
-### 叠加 (Overlay)
+### 疊加 (Overlay)
 
-**展示信息**：多个系列叠加在同一坐标系
+**展示資訊**：多個系列疊加在同一座標系
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| series | 系列数组 | 多个系列 |
-| xAxisIndex | 轴索引 | 共享x轴 |
-| yAxisIndex | 轴索引 | 共享y轴 |
+| series | 系列陣列 | 多個系列 |
+| xAxisIndex | 軸索引 | 共享x軸 |
+| yAxisIndex | 軸索引 | 共享y軸 |
 
-**变量关系**：共享坐标轴的多个数据系列
+**變數關係**：共享座標軸的多個資料系列
 
 ```javascript
 option = {
@@ -226,52 +226,52 @@ option = {
 };
 ```
 
-## 多图布局方案
+## 多圖佈局方案
 
-### 上下布局
+### 上下佈局
 
 ```javascript
 grid: [
-  { top: '5%', height: '40%' },   // 上图
-  { top: '55%', height: '40%' }   // 下图
+  { top: '5%', height: '40%' },   // 上圖
+  { top: '55%', height: '40%' }   // 下圖
 ]
 ```
 
-### 左右布局
+### 左右佈局
 
 ```javascript
 grid: [
-  { left: '5%', width: '43%' },   // 左图
-  { right: '5%', width: '43%' }   // 右图
+  { left: '5%', width: '43%' },   // 左圖
+  { right: '5%', width: '43%' }   // 右圖
 ]
 ```
 
-### 复杂布局
+### 複雜佈局
 
 ```javascript
 grid: [
-  { left: '5%', top: '5%', width: '60%', height: '40%' },      // 主图
-  { right: '5%', top: '5%', width: '30%', height: '40%' },    // 侧边图
-  { left: '5%', top: '55%', width: '85%', height: '40%' }      // 底部大图
+  { left: '5%', top: '5%', width: '60%', height: '40%' },      // 主圖
+  { right: '5%', top: '5%', width: '30%', height: '40%' },    // 側邊圖
+  { left: '5%', top: '55%', width: '85%', height: '40%' }      // 底部大圖
 ]
 ```
 
 ## 通用配置
 
-### 连接组配置
+### 連線組配置
 
 ```javascript
-// 连接多个图表
+// 連線多個圖表
 echarts.connect('myGroup');
 
-// 取消连接
+// 取消連線
 echarts.disConnect('myGroup');
 
-// 获取已连接图表列表
+// 獲取已連線圖表列表
 echarts.getConnected('myGroup');
 ```
 
-### Axis Pointer 联动
+### Axis Pointer 聯動
 
 ```javascript
 tooltip: {
@@ -288,17 +288,17 @@ axisPointer: {
 }
 ```
 
-## 注意事项
+## 注意事項
 
-1. **Grid重叠**：避免grid区域重叠导致渲染问题
-2. **坐标轴唯一性**：每个series必须指定xAxisIndex和yAxisIndex
-3. **Polar限制**：极坐标下某些图表类型不支持
-4. **Timeline数据**：确保每个时间点数据格式一致
-5. **联动性能**：过多联动图表可能影响性能
+1. **Grid重疊**：避免grid區域重疊導致渲染問題
+2. **座標軸唯一性**：每個series必須指定xAxisIndex和yAxisIndex
+3. **Polar限制**：極座標下某些圖表型別不支援
+4. **Timeline資料**：確保每個時間點資料格式一致
+5. **聯動效能**：過多聯動圖表可能影響效能
 
-## 相关技能
+## 相關技能
 
-- [echart-basic](../echart-basic/SKILL.md) - 基础图表
-- [echart-finance](../echart-finance/SKILL.md) - 金融图（K线+成交量组合）
-- [echart-geo](../echart-geo/SKILL.md) - 地理图（地图+散点+航线组合）
-- [echart-advanced](../echart-advanced/SKILL.md) - 高级特性（DataZoom联动）
+- [echart-basic](../echart-basic/SKILL.md) - 基礎圖表
+- [echart-finance](../echart-finance/SKILL.md) - 金融圖（K線+成交量組合）
+- [echart-geo](../echart-geo/SKILL.md) - 地理圖（地圖+散點+航線組合）
+- [echart-advanced](../echart-advanced/SKILL.md) - 高階特性（DataZoom聯動）

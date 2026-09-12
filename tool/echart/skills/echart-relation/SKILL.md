@@ -3,47 +3,47 @@ name: echart-relation
 version: v1.0.0
 author: skill-factory
 parent: echart
-description: ECharts 关系图技能，掌握关系图、桑基图、树图、旭日图等层级和网络关系数据的可视化配置
+description: ECharts 關係圖技能，掌握關係圖、桑基圖、樹圖、旭日圖等層級和網路關係資料的視覺化配置
 tags: [echarts, graph, sankey, tree, sunburst, relation, network]
 dependency:
   parent: echart
   requires: echart-basic
 ---
 
-# EChart Relation Skill - 关系图技能
+# EChart Relation Skill - 關係圖技能
 
-## 任务目标
+## 任務目標
 
-- **本 Skill 用于**：掌握关系型数据的可视化（网络关系、层级结构、流量分布）
+- **本 Skill 用於**：掌握關係型資料的視覺化（網路關係、層級結構、流量分佈）
 - **核心能力**：
-  - 关系图：网络关系、组织结构
-  - 桑基图：流量守恒、流向分析
-  - 树图：层级归属、目录结构
-  - 旭日图：多级占比、层级分布
-- **触发条件**：展示网络关系、层级数据、流量数据时
+  - 關係圖：網路關係、組織結構
+  - 桑基圖：流量守恆、流向分析
+  - 樹圖：層級歸屬、目錄結構
+  - 旭日圖：多級佔比、層級分佈
+- **觸發條件**：展示網路關係、層級資料、流量資料時
 
-## 图表类型
+## 圖表型別
 
-### 关系图 (Graph)
+### 關係圖 (Graph)
 
-**展示信息**：节点间的网络关系、权重连接
+**展示資訊**：節點間的網路關係、權重連線
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| nodes | 节点数组 | [{name, value, category, symbolSize}] |
-| links/edges | 边数组 | [{source, target, value}] |
-| categories | 分类数组 | 节点的分组 |
-| layout | 布局算法 | 'force'/'circular'/'none' |
+| nodes | 節點陣列 | [{name, value, category, symbolSize}] |
+| links/edges | 邊陣列 | [{source, target, value}] |
+| categories | 分類陣列 | 節點的分組 |
+| layout | 佈局演算法 | 'force'/'circular'/'none' |
 
-**变量关系**：source-target 连接关系，value 表示权重
+**變數關係**：source-target 連線關係，value 表示權重
 
-**子类型**：
-- 力引导布局图 (force)
-- 笛卡尔坐标系关系图
-- 环形布局图
-- 自动布局关系图
-- 关系图标签隐藏重叠
+**子型別**：
+- 力引導佈局圖 (force)
+- 笛卡爾座標系關係圖
+- 環形佈局圖
+- 自動佈局關係圖
+- 關係圖示籤隱藏重疊
 
 ```javascript
 option = {
@@ -57,7 +57,7 @@ option = {
     links: [
       { source: 'Node1', target: 'Node2', value: 5 }
     ],
-    categories: [{ name: '类目1' }, { name: '类目2' }],
+    categories: [{ name: '類目1' }, { name: '類目2' }],
     force: {
       repulsion: 100,
       edgeLength: 50
@@ -66,24 +66,24 @@ option = {
 };
 ```
 
-### 桑基图 (Sankey)
+### 桑基圖 (Sankey)
 
-**展示信息**：流量从起点到终点的守恒关系
+**展示資訊**：流量從起點到終點的守恆關係
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| nodes | 节点数组 | [{name}] |
-| links | 边数组 | [{source, target, value}] |
-| nodeAlign | 对齐方式 | 'left'/'right'/'justify' |
+| nodes | 節點陣列 | [{name}] |
+| links | 邊陣列 | [{source, target, value}] |
+| nodeAlign | 對齊方式 | 'left'/'right'/'justify' |
 
-**变量关系**：流量守恒（流入=流出）
+**變數關係**：流量守恆（流入=流出）
 
-**子类型**：
-- 水平桑基图
-- 垂直桑基图
-- 渐变色边桑基图
-- 层级自定义样式桑基图
+**子型別**：
+- 水平桑基圖
+- 垂直桑基圖
+- 漸變色邊桑基圖
+- 層級自定義樣式桑基圖
 
 ```javascript
 option = {
@@ -106,25 +106,25 @@ option = {
 };
 ```
 
-### 树图 (Tree)
+### 樹圖 (Tree)
 
-**展示信息**：严格的父子层级关系
+**展示資訊**：嚴格的父子層級關係
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| data | 树节点对象 | {name, children: [...]} |
-| orient | 展开方向 | 'horizontal'/'vertical'/'radial' |
-| symbol | 节点形状 | 'circle'/'rect'/'roundRect' |
-| label | 标签配置 | 节点文字样式 |
+| data | 樹節點物件 | {name, children: [...]} |
+| orient | 展開方向 | 'horizontal'/'vertical'/'radial' |
+| symbol | 節點形狀 | 'circle'/'rect'/'roundRect' |
+| label | 標籤配置 | 節點文字樣式 |
 
-**变量关系**：严格的树形父子归属关系
+**變數關係**：嚴格的樹形父子歸屬關係
 
-**子类型**：
-- 从左到右树图
-- 从上到下树图
-- 径向树图
-- 折线树图
+**子型別**：
+- 從左到右樹圖
+- 從上到下樹圖
+- 徑向樹圖
+- 折線樹圖
 
 ```javascript
 option = {
@@ -142,25 +142,25 @@ option = {
 };
 ```
 
-### 旭日图 (Sunburst)
+### 旭日圖 (Sunburst)
 
-**展示信息**：多层级占比数据，从内到外的包含关系
+**展示資訊**：多層級佔比資料，從內到外的包含關係
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| data | 旭日节点数组 | [{name, value, children}] |
-| radius | 半径 | [内半径, 外半径] |
-| label | 标签配置 | 扇区标签样式 |
-| levels | 层级配置 | 每层的半径、标签设置 |
+| data | 旭日節點陣列 | [{name, value, children}] |
+| radius | 半徑 | [內半徑, 外半徑] |
+| label | 標籤配置 | 扇區標籤樣式 |
+| levels | 層級配置 | 每層的半徑、標籤設定 |
 
-**变量关系**：从内到外的包含占比关系
+**變數關係**：從內到外的包含佔比關係
 
-**子类型**：
-- 基础旭日图
-- 圆角旭日图
-- 单色旭日图
-- 标签旋转旭日图
+**子型別**：
+- 基礎旭日圖
+- 圓角旭日圖
+- 單色旭日圖
+- 標籤旋轉旭日圖
 
 ```javascript
 option = {
@@ -182,19 +182,19 @@ option = {
 
 ## 通用配置
 
-### 力引导布局配置
+### 力引導佈局配置
 
 ```javascript
 force: {
-  initLayout: 'circular',  // 初始化布局
-  repulsion: 100,           // 节点斥力
+  initLayout: 'circular',  // 初始化佈局
+  repulsion: 100,           // 節點斥力
   gravity: 0.1,             // 重心引力
-  edgeLength: [50, 200],    // 边的理想长度
-  layoutAnimation: true     // 布局动画
+  edgeLength: [50, 200],    // 邊的理想長度
+  layoutAnimation: true     // 佈局動畫
 }
 ```
 
-### 节点样式
+### 節點樣式
 
 ```javascript
 itemStyle: {
@@ -206,23 +206,23 @@ itemStyle: {
 }
 ```
 
-### 边样式
+### 邊樣式
 
 ```javascript
 lineStyle: {
   color: '#ccc',
   width: 1,
-  curveness: 0.3,      // 弯曲度
+  curveness: 0.3,      // 彎曲度
   opacity: 0.6
 }
 ```
 
-## 数据转换
+## 資料轉換
 
-### 从树形数据转换
+### 從樹形資料轉換
 
 ```javascript
-// 树形 -> 旭日图
+// 樹形 -> 旭日圖
 function treeToSunburst(data) {
   return {
     name: data.name,
@@ -232,10 +232,10 @@ function treeToSunburst(data) {
 }
 ```
 
-### 从邻接表转换
+### 從鄰接錶轉換
 
 ```javascript
-// 邻接表 -> 关系图节点和边
+// 鄰接表 -> 關係圖節點和邊
 function adjacencyToGraph(adjList) {
   const nodes = [];
   const links = [];
@@ -250,16 +250,16 @@ function adjacencyToGraph(adjList) {
 }
 ```
 
-## 注意事项
+## 注意事項
 
-1. **力引导布局**：大数据量时考虑关闭布局动画或减少迭代次数
-2. **桑基图**：确保流量守恒（可选中节点编辑）
-3. **树图**：数据必须是严格的树形结构（无环）
-4. **旭日图**：内层值应该等于外层所有子节点之和
-5. **性能**：超过500节点考虑使用 canvas 渲染器
+1. **力引導佈局**：大資料量時考慮關閉佈局動畫或減少迭代次數
+2. **桑基圖**：確保流量守恆（可選中節點編輯）
+3. **樹圖**：資料必須是嚴格的樹形結構（無環）
+4. **旭日圖**：內層值應該等於外層所有子節點之和
+5. **效能**：超過500節點考慮使用 canvas 渲染器
 
-## 相关技能
+## 相關技能
 
-- [echart-basic](../echart-basic/SKILL.md) - 基础图表
-- [echart-multi](../echart-multi/SKILL.md) - 多图组合（联动）
-- [echart-geo](../echart-geo/SKILL.md) - 地理图（关系图+地图）
+- [echart-basic](../echart-basic/SKILL.md) - 基礎圖表
+- [echart-multi](../echart-multi/SKILL.md) - 多圖組合（聯動）
+- [echart-geo](../echart-geo/SKILL.md) - 地理圖（關係圖+地圖）

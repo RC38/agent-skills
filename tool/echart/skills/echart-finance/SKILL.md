@@ -3,47 +3,47 @@ name: echart-finance
 version: v1.0.0
 author: skill-factory
 parent: echart
-description: ECharts 金融图技能，掌握K线图、雷达图、仪表盘等金融场景图表，用于股票走势、能力评估和指标监控
+description: ECharts 金融圖技能，掌握K線圖、雷達圖、儀表盤等金融場景圖表，用於股票走勢、能力評估和指標監控
 tags: [echarts, candlestick, radar, gauge, finance, kline]
 dependency:
   parent: echart
   requires: echart-basic
 ---
 
-# EChart Finance Skill - 金融图技能
+# EChart Finance Skill - 金融圖技能
 
-## 任务目标
+## 任務目標
 
-- **本 Skill 用于**：掌握金融场景数据可视化（股票走势、能力评估、指标监控）
+- **本 Skill 用於**：掌握金融場景資料視覺化（股票走勢、能力評估、指標監控）
 - **核心能力**：
-  - K线图：股票期货走势、波动分析
-  - 雷达图：能力评估、多维对比
-  - 仪表盘：进度监控、指标展示
-- **触发条件**：展示金融数据、评估指标、进度监控时
+  - K線圖：股票期貨走勢、波動分析
+  - 雷達圖：能力評估、多維對比
+  - 儀表盤：進度監控、指標展示
+- **觸發條件**：展示金融資料、評估指標、進度監控時
 
-## 图表类型
+## 圖表型別
 
-### K线图 (Candlestick)
+### K線圖 (Candlestick)
 
-**展示信息**：股票/期货的OHLC（开盘、最高、收盘、最低价）
+**展示資訊**：股票/期貨的OHLC（開盤、最高、收盤、最低價）
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| xAxis | 类目轴/时间轴 | 横坐标（时间） |
-| yAxis | 数值轴 | 纵坐标（价格） |
-| series.data | 数组 | [open, close, lowest, highest] |
-| series.itemStyle | 样式 | K线颜色配置 |
+| xAxis | 類目軸/時間軸 | 橫座標（時間） |
+| yAxis | 數值軸 | 縱座標（價格） |
+| series.data | 陣列 | [open, close, lowest, highest] |
+| series.itemStyle | 樣式 | K線顏色配置 |
 
-**变量关系**：时间序列的四个价格点
+**變數關係**：時間序列的四個價格點
 
-**子类型**：
-- 基础K线图
-- 上证指数K线图
-- OHLC图（自定义系列）
-- 大数据量K线图
-- 触屏交互K线图
-- 断轴K线图
+**子型別**：
+- 基礎K線圖
+- 上證指數K線圖
+- OHLC圖（自定義系列）
+- 大資料量K線圖
+- 觸屏互動K線圖
+- 斷軸K線圖
 
 ```javascript
 option = {
@@ -57,8 +57,8 @@ option = {
       [30, 25, 18, 38]
     ],
     itemStyle: {
-      color: '#eb5454',       // 上涨颜色
-      color0: '#47b262',      // 下跌颜色
+      color: '#eb5454',       // 上漲顏色
+      color0: '#47b262',      // 下跌顏色
       borderColor: '#eb5454',
       borderColor0: '#47b262'
     }
@@ -66,34 +66,34 @@ option = {
 };
 ```
 
-### 雷达图 (Radar)
+### 雷達圖 (Radar)
 
-**展示信息**：多维度能力/属性对比
+**展示資訊**：多維度能力/屬性對比
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| radar | 雷达坐标系 | 维度配置 |
-| indicator | 指标数组 | [{name, max, min}] |
-| series.data | 数组 | 各维度取值 |
+| radar | 雷達座標系 | 維度配置 |
+| indicator | 指標陣列 | [{name, max, min}] |
+| series.data | 陣列 | 各維度取值 |
 
-**变量关系**：各维度数值的相对位置和面积
+**變數關係**：各維度數值的相對位置和麵積
 
-**子类型**：
-- 基础雷达图
-- 多雷达图（叠加）
-- AQI雷达图
-- 自定义样式雷达图
-- 浏览器占比变化雷达图
+**子型別**：
+- 基礎雷達圖
+- 多雷達圖（疊加）
+- AQI雷達圖
+- 自定義樣式雷達圖
+- 瀏覽器佔比變化雷達圖
 
 ```javascript
 option = {
   radar: {
     indicator: [
       { name: '速度', max: 100 },
-      { name: '价格', max: 100 },
+      { name: '價格', max: 100 },
       { name: '功能', max: 100 },
-      { name: '外观', max: 100 },
+      { name: '外觀', max: 100 },
       { name: '油耗', max: 100 }
     ],
     shape: 'polygon',        // 'polygon' | 'circle'
@@ -103,41 +103,41 @@ option = {
     type: 'radar',
     data: [{
       value: [85, 60, 90, 75, 50],
-      name: '车型A',
+      name: '車型A',
       areaStyle: { opacity: 0.3 }
     }, {
       value: [70, 80, 70, 85, 70],
-      name: '车型B',
+      name: '車型B',
       areaStyle: { opacity: 0.3 }
     }]
   }]
 };
 ```
 
-### 仪表盘 (Gauge)
+### 儀表盤 (Gauge)
 
-**展示信息**：单一指标与目标/范围的对比
+**展示資訊**：單一指標與目標/範圍的對比
 
-**变量**：
-| 变量 | 类型 | 说明 |
+**變數**：
+| 變數 | 型別 | 說明 |
 |-----|------|-----|
-| series.data | 数值 | 当前值 |
+| series.data | 數值 | 當前值 |
 | min | 最小值 | 刻度起始值 |
-| max | 最大值 | 刻度结束值 |
-| radius | 半径 | 仪表盘大小 |
-| startAngle | 起始角度 | 指针起始 |
-| endAngle | 结束角度 | 指针结束 |
+| max | 最大值 | 刻度結束值 |
+| radius | 半徑 | 儀表盤大小 |
+| startAngle | 起始角度 | 指標起始 |
+| endAngle | 結束角度 | 指標結束 |
 
-**变量关系**：指针位置相对于整个刻度范围的比例
+**變數關係**：指標位置相對於整個刻度範圍的比例
 
-**子类型**：
-- 基础仪表盘
-- 速度仪表盘
-- 进度仪表盘
-- 多标题仪表盘
-- 等级仪表盘
-- 时钟仪表盘
-- 汽车仪表盘
+**子型別**：
+- 基礎儀表盤
+- 速度儀表盤
+- 進度儀表盤
+- 多標題儀表盤
+- 等級儀表盤
+- 時鐘儀表盤
+- 汽車儀表盤
 
 ```javascript
 option = {
@@ -160,7 +160,7 @@ option = {
         ]
       }
     },
-    data: [{ value: 67, name: '进度' }],
+    data: [{ value: 67, name: '進度' }],
     title: { offsetCenter: [0, '40%'] },
     detail: { valueAnimation: true, formatter: '{value}%' }
   }]
@@ -169,28 +169,28 @@ option = {
 
 ## 通用配置
 
-### K线图专属配置
+### K線圖專屬配置
 
 ```javascript
 series: [{
   type: 'candlestick',
   barWidth: '60%',
   itemStyle: {
-    color: '#eb5454',        // 阳线（上涨）
-    color0: '#47b262',       // 阴线（下跌）
+    color: '#eb5454',        // 陽線（上漲）
+    color0: '#47b262',       // 陰線（下跌）
     borderColor: '#eb5454',
     borderColor0: '#47b262'
   }
 }]
 ```
 
-### 雷达图专属配置
+### 雷達圖專屬配置
 
 ```javascript
 radar: {
   indicator: [
-    { name: '指标1', max: 100 },
-    { name: '指标2', max: 100 }
+    { name: '指標1', max: 100 },
+    { name: '指標2', max: 100 }
   ],
   shape: 'polygon',
   splitNumber: 5,
@@ -200,7 +200,7 @@ radar: {
 }
 ```
 
-### 仪表盘专属配置
+### 儀表盤專屬配置
 
 ```javascript
 series: [{
@@ -226,16 +226,16 @@ series: [{
 }]
 ```
 
-## 数据转换
+## 資料轉換
 
-### 股票数据转K线图
+### 股票資料轉K線圖
 
 ```javascript
 function toCandlestick(stockData) {
   return stockData.map(item => {
     return [
-      item.open,    // 开盘
-      item.close,   // 收盘
+      item.open,    // 開盤
+      item.close,   // 收盤
       item.low,     // 最低
       item.high     // 最高
     ];
@@ -243,7 +243,7 @@ function toCandlestick(stockData) {
 }
 ```
 
-### 评估数据转雷达图
+### 評估資料轉雷達圖
 
 ```javascript
 function toRadarData(evaluation) {
@@ -260,16 +260,16 @@ function toRadarData(evaluation) {
 }
 ```
 
-## 注意事项
+## 注意事項
 
-1. **K线图**：确保OHLC数据顺序正确，颜色配置要区分涨跌
-2. **雷达图**：指标数量建议5-8个，过多会导致图形拥挤
-3. **仪表盘**：使用分段颜色直观展示进度/状态
-4. **大数据量**：K线图超过1000条考虑使用dataZoom
-5. **交互**：K线图常配合MA均线使用
+1. **K線圖**：確保OHLC資料順序正確，顏色配置要區分漲跌
+2. **雷達圖**：指標數量建議5-8個，過多會導致圖形擁擠
+3. **儀表盤**：使用分段顏色直觀展示進度/狀態
+4. **大資料量**：K線圖超過1000條考慮使用dataZoom
+5. **互動**：K線圖常配合MA均線使用
 
-## 相关技能
+## 相關技能
 
-- [echart-basic](../echart-basic/SKILL.md) - 基础图表
-- [echart-multi](../echart-multi/SKILL.md) - 多图组合（K线+成交量）
-- [echart-advanced](../echart-advanced/SKILL.md) - 高级特性（dataZoom缩放）
+- [echart-basic](../echart-basic/SKILL.md) - 基礎圖表
+- [echart-multi](../echart-multi/SKILL.md) - 多圖組合（K線+成交量）
+- [echart-advanced](../echart-advanced/SKILL.md) - 高階特性（dataZoom縮放）

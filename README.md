@@ -18,12 +18,13 @@ AI Agent 技能集合 — 為 AI 程式設計助手設計的專業技能庫。
 | [cocos](lang/cocos/) | Cocos Creator 3.8 遊戲引擎開發 |
 | [vsce](lang/vsce/) | VSCode 擴充功能開發完整指南 |
 
-### tool/ — 工具（8）
+### tool/ — 工具（9）
 教你使用特定開發工具或函式庫。
 
 | 技能 | 說明 |
 |------|------|
 | [git](tool/git/) | Git 版本控制全流程 |
+| [git-fork-workflow](tool/git-fork-workflow/) | Fork 工作流日常操作：雙 remote 安全推送、上游同步、故障排除 |
 | [agent](tool/agent/) | Hermes Agent 設定系統 |
 | [drissonpage](tool/drissonpage/) | DrissionPage 網頁自動化 |
 | [scrapling](tool/scrapling/) | Scrapling 自適應網頁爬取框架 |

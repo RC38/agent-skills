@@ -34,6 +34,20 @@ EChart Skills 是 Apache ECharts 技術棧的完整技能族，包含以下子�
 | echart-advanced | v1.0.0 | 高階特性（dataset、dataZoom、自定義系列） | echart-basic |
 | echart-multi | v1.0.0 | 多圖組合（grid、polar、timeline、聯動） | 多個基礎技能 |
 
+## 與數據分析流程協同（Data Analytics Integration）
+
+當圖表製作源於**商業數據分析、業務診斷、運營報表或 A/B 實驗結果呈現**時，強烈推薦與 `process/data-analytics` 技能庫協同：
+- **前置分析與選型大腦**：參考 `process/data-analytics/analytics-visualization`（圖表選型決策樹）與 `analytics-business-methods`（漏斗、留存、RFM分群）。
+- **圖表代碼落實現身**：由本技能族提供精準的 Apache ECharts 配置項（`option`）與 HTML / 前端交互代碼。
+
+| 數據分析場景 | 前置分析技能 (`data-analytics`) | 推薦使用之 ECharts 子技能 |
+|:---|:---|:---|
+| **趨勢對比、業務大盤** | `analytics-visualization` | `echart-basic`（折線/柱狀/餅圖） |
+| **用戶漏斗、轉化流向、層級** | `analytics-business-methods` (漏斗) | `echart-relation`（桑基圖/樹圖/旭日圖） |
+| **相關性矩陣、價格分佈** | `analytics-statistics` (相關性/分佈) | `echart-statistics`（熱力圖/盒須圖/散點） |
+| **用戶畫像、業績 KPI** | `analytics-business-methods` (RFM分群) | `echart-finance`（雷達圖/儀表盤） |
+| **大屏儀表盤、多圖聯動** | `analytics-report` (儀表盤報告) | `echart-multi`（Grid 多網格/聯動） |
+
 ## 使用方式
 
 ### 單獨使用子技能

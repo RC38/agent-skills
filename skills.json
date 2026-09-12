@@ -9,7 +9,7 @@
     },
     "tool": {
       "description": "工具",
-      "skills": ["git", "git-fork-workflow", "drissonpage", "scrapling", "venvstacks", "plotnine", "echart", "dashboard", "agent"]
+      "skills": ["git", "git-fork-workflow", "drissonpage", "scrapling", "venvstacks", "plotnine", "echart", "dashboard", "agent", "parquet"]
     },
     "process": {
       "description": "流程与方法论",
@@ -20,7 +20,7 @@
       "skills": ["tech-comparison", "side-hustle-evaluator", "recruitment-processor", "copyright-assist"]
     }
   },
-  "total": 31,
+  "total": 32,
   "merged": {
     "planning": "→ project-management/skills/planning/",
     "code-optimizer": "→ software-design/skills/code-optimizer/",

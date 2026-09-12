@@ -18,7 +18,7 @@ AI Agent 技能集合 — 為 AI 程式設計助手設計的專業技能庫。
 | [cocos](lang/cocos/) | Cocos Creator 3.8 遊戲引擎開發 |
 | [vsce](lang/vsce/) | VSCode 擴充功能開發完整指南 |
 
-### tool/ — 工具（9）
+### tool/ — 工具（10）
 教你使用特定開發工具或函式庫。
 
 | 技能 | 說明 |
@@ -32,6 +32,8 @@ AI Agent 技能集合 — 為 AI 程式設計助手設計的專業技能庫。
 | [plotnine](tool/plotnine/) | Plotnine 資料視覺化 |
 | [echart](tool/echart/) | Apache ECharts 圖表視覺化 |
 | [dashboard](tool/dashboard/) | Streamlit 資料儀表板建構 |
+| [parquet](tool/parquet/) | Python 處理 Apache Parquet：依賴管理（uv/pip）、Schema 檢視、下推過濾與極速查詢 |
+
 
 ### process/ — 流程與方法論（10）
 教你系統化的開發流程、架構方法論與編碼規範。

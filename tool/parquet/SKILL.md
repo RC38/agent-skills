@@ -1,8 +1,8 @@
 ---
 name: parquet
 version: 1.0.0
-description: Python 處理 Apache Parquet 檔案技能 — 包含依賴管理（uv / pip）、Schema 與欄位元數據無開銷檢視、下推過濾高效查詢、SQL 直接查詢（DuckDB）以及寫入與壓縮最佳化。
-tags: [parquet, apache-parquet, python, pyarrow, duckdb, uv, dataframe, data-processing]
+description: Python 處理 Apache Parquet 檔案技能 — 包含依賴管理（uv / pip）、Schema 與欄位元數據無開銷檢視、下推過濾高效查詢、SQL 直接查詢（DuckDB）、寫入與壓縮最佳化，以及 CSV / Excel 批次高效轉存 Parquet。
+tags: [parquet, apache-parquet, python, pyarrow, duckdb, uv, dataframe, data-processing, excel, csv]
 ---
 
 # Python 處理 Apache Parquet 檔案技能
@@ -26,6 +26,9 @@ tags: [parquet, apache-parquet, python, pyarrow, duckdb, uv, dataframe, data-pro
 - 「在不載入全部 Parquet 資料的情況下查詢某一筆資料」
 - 「Parquet 套件依賴要怎麼安裝（uv / pip）」
 - 「如何將 DataFrame 或資料寫入 Parquet 並設定壓縮」
+- 「把 Excel (.xlsx) 批次轉存成 Parquet」
+- 「單一 CSV 檔案過大，要批次（分片）轉存成 Parquet」
+- 「大 Parquet 資料集要分頁瀏覽 / 依條件查詢顯示」
 
 ---
 
@@ -38,56 +41,28 @@ tags: [parquet, apache-parquet, python, pyarrow, duckdb, uv, dataframe, data-pro
 # 核心官方套件 PyArrow + 嵌入式極速 SQL 引擎 DuckDB
 uv add pyarrow duckdb
 
-# 若需要搭配 Pandas 或 Polars
-uv add pandas polars
+# 若需要搭配 Pandas、Polars 或處理 Excel
+uv add pandas polars openpyxl
 ```
 
 ### 情境 B：使用 uv 虛擬環境（快速替代 pip）
 ```bash
-uv pip install pyarrow duckdb pandas
+uv pip install pyarrow duckdb pandas openpyxl
 ```
 
-### 情境 C：一次性獨立腳本執行（無需手動建立虛擬環境）
+### 情境 C：獨立腳本 PEP 723 零配置執行（最推薦）
+隨附的所有工具腳本皆已內嵌 PEP 723 宣告，無需手動建立虛擬環境即可直接以 `uv run` 執行：
 ```bash
-uv run --with pyarrow --with duckdb python query_parquet.py
-```
-
-或在 Python 腳本頂部加入 PEP 723 內嵌宣告：
-```python
-# /// script
-# dependencies = [
-#     "pyarrow>=14.0.0",
-#     "duckdb>=0.9.0",
-# ]
-# ///
-
-import duckdb
-import pyarrow.parquet as pq
-# 直接透過: uv run script.py 執行即可自動安裝並執行
+uv run scripts/list_parquet_columns.py "data.parquet"
+uv run scripts/query_parquet.py "data.parquet" -w "id = 100"
+uv run scripts/csv_to_parquet.py "log.csv"
+uv run scripts/xlsx_to_parquet.py "data.xlsx"
 ```
 
 ### 情境 D：傳統 pip 安裝（受限環境）
 ```bash
-pip install pyarrow duckdb
+pip install pyarrow duckdb pandas openpyxl
 ```
-
-### 情境 E：離線環境手動下載 wheel
-
-DuckDB / PyArrow 皆為**預先編譯好的二進位 wheel**，正常環境下 `pip` / `uv` 會自動依平台抓取對應檔案（macOS universal2、Linux x86_64/aarch64、Windows），無需手動下載或編譯。
-
-僅在離線或受限網路環境才需手動下載：
-
-1. 至 [PyPI simple index](https://pypi.org/simple/duckdb/) 選取與目標平台相符的 `.whl`
-   （例如 `duckdb-1.5.5-cp312-cp312-macosx_10_9_universal2.whl`，注意 Python 版本 cpXXX、作業系統與架構須一致）。
-2. 將 wheel 複製至離線機器後安裝：
-
-```bash
-pip install ./duckdb-*.whl
-# 或 uv
-uv pip install ./duckdb-*.whl
-```
-
-> 官方文件（[DuckDB Python Installation](https://duckdb.org/docs/stable/guides/python/install)）同樣建議直接 `pip install duckdb`，官網本身不提供獨立 wheel 下載頁。
 
 ---
 
@@ -126,6 +101,16 @@ file_path = "data.parquet"
 schema_df = duckdb.sql(f"DESCRIBE SELECT * FROM '{file_path}'").df()
 print(schema_df[["column_name", "column_type", "null"]])
 ```
+
+> 💡 **隨附腳本（最省事）**：直接執行現成腳本，一次輸出欄位清單 + 總筆數 + Row Groups 數（支援 table、json、markdown 格式，精確對齊中文字寬）：
+>
+> ```bash
+> # 方式 1：使用 uv 零配置執行
+> uv run scripts/list_parquet_columns.py "<檔案路徑.parquet>" [--limit N] [--format json]
+>
+> # 方式 2：使用一般 python 執行
+> python3 scripts/list_parquet_columns.py "<檔案路徑.parquet>" [--limit N] [--format markdown]
+> ```
 
 ---
 
@@ -190,6 +175,24 @@ result = (
 print(result)
 ```
 
+> 💡 **隨附腳本（大資料集分頁探索與 SQL 分析）**：條件查詢 + 分頁顯示 + 自訂 SQL 聚合，WHERE 與 SELECT 欄位皆下推至磁碟層級：
+>
+> ```bash
+> # 方式 1：條件查詢與分頁（支援 table, json, jsonl, csv）
+> uv run scripts/query_parquet.py "<檔案路徑.parquet 或 glob>" \
+>     -c col1,col2 -w "col = 'value'" -o "create_datetime DESC" --page 2 --page-size 20
+>
+> # 方式 2：自訂完整 SQL 分析（DuckDB 聚合，支援 {src} 佔位符）
+> uv run scripts/query_parquet.py "<檔案路徑.parquet>" \
+>     -q "SELECT status, COUNT(*) AS count FROM {src} GROUP BY status ORDER BY count DESC"
+>
+> # 方式 3：串流輸出 JSONL 並配合 jq 處理
+> uv run scripts/query_parquet.py "dataset/*.parquet" -c user_id,email --format jsonl | jq -c .
+> ```
+>
+> 支援 `--format table|json|jsonl|csv`、`--no-count`（超大資料跳過總數統計）、多檔案 glob、自訂 `-q/--query`。
+> ⚠️ **分頁務必搭配 `-o/--order-by`**，否則各頁列順序可能不一致。
+
 ---
 
 ### 配方 3：寫入 Parquet 檔案與壓縮最佳化
@@ -233,6 +236,48 @@ pq.write_to_dataset(
 
 ---
 
+### 配方 4：Excel (.xlsx) 批次轉存 Parquet
+
+原始資料常以 Excel 交付，轉成 Parquet 後查詢快數倍且檔案更小。隨附腳本具備自動清理 Sheet 名稱特殊字元（防路徑崩潰）與空表過濾：
+
+```bash
+# 預覽目錄內所有 xlsx 的 sheet 結構（毫秒級預覽，不寫入）
+uv run scripts/xlsx_to_parquet.py "<目錄>" --dry-run
+
+# 批次轉換整個目錄（全部 sheet），輸出到獨立目錄、zstd 壓縮
+uv run scripts/xlsx_to_parquet.py "<目錄>" -o "parquet_out/" --compression zstd
+
+# 只轉資料 sheet，並自動跳過空 sheet
+uv run scripts/xlsx_to_parquet.py "data.xlsx" --sheet "Log資料" --skip-empty
+```
+
+命名規則：單一 sheet → `<stem>.parquet`；多 sheet 未指定 `--sheet` → 每個 sheet 一檔 `<stem>__<安全sheet名>.parquet`。單檔失敗不中斷批次，會標記 `[失敗]` 繼續。
+
+---
+
+### 配方 5：CSV 批次轉存 Parquet（單一檔案過大 → 流式分片）
+
+CSV 是行式格式且無壓縮，檔案過大時直接 `pd.read_csv()` 全載入會爆記憶體。隨附腳本以 **chunksize 流式讀取**，逐塊寫出多個 Parquet part——記憶體佔用僅與單塊大小（`--rows-per-file`）有關，與檔案總大小無關：
+
+```bash
+# 快速預覽 CSV 結構與分片預估（二進位行掃描，秒級響應，不寫入）
+uv run scripts/csv_to_parquet.py "<目錄>" --dry-run
+
+# 80MB 單檔轉 Parquet，每 5 萬列一個 part、zstd 壓縮
+uv run scripts/csv_to_parquet.py "202608_Log.csv" --rows-per-file 50000 --compression zstd
+
+# 批次轉換目錄內所有 CSV（自動型別推斷、big5 編碼、容錯髒位元組）
+uv run scripts/csv_to_parquet.py "dataset/" -o "parquet_out/" --type-mode auto --encoding big5 --encoding-errors replace
+```
+
+命名規則：單一分片 → `<stem>.parquet`；多分片 → `<stem>_part000.parquet, _part001.parquet ...`（讀取時用 glob 或 DuckDB 直接查目錄即可合併查詢，見配方 2）。
+
+> 💡 **型別推斷指南**：
+> - `--type-mode str`（預設）：全字串讀取，對包含混合型別的「髒日誌」最穩健。
+> - `--type-mode auto`：啟用自動型別推斷，適合乾淨業務資料表，可保留數值/時間的 Min/Max 下推過濾優勢與更高壓縮比。
+
+---
+
 ## 3. 最佳實踐與避坑指南
 
 1. **避免全量 `pd.read_parquet('huge.parquet')`**：
@@ -244,4 +289,16 @@ pq.write_to_dataset(
    ```python
    duckdb.sql("SELECT * FROM 'logs/2026/*.parquet' WHERE status = 500")
    ```
+4. **DuckDB API 小坑（1.5.x 實測）**：
+   - `DESCRIBE SELECT * FROM 'file.parquet'` 回傳 **6 欄**（column_name, column_type, null, key, default, extra），取前三個即可。
+   - `parquet_metadata()` 每列是 row group × column chunk，**沒有 num_rows 欄位**；Row Group 數用 `COUNT(DISTINCT row_group_id)`。
+   - Parquet 檔案本身**不支援逐欄 comment/註解**；欄位語義說明只能存在於檔案層級 key-value metadata（如 pandas schema JSON）或外部文件。
 
+---
+
+## 資源
+
+- [scripts/list_parquet_columns.py](./scripts/list_parquet_columns.py) — 列出欄位名稱 / 資料型態 / 可為空 + 總筆數 + Row Groups 數（僅讀 Metadata，支援 table/json/markdown，支援 uv run 零依賴執行）
+- [scripts/query_parquet.py](./scripts/query_parquet.py) — 條件查詢 + 分頁顯示 + 自訂 SQL 查詢（WHERE / SELECT 下推、table/json/jsonl/csv 輸出、glob 多檔案；支援 uv run 零依賴執行）
+- [scripts/xlsx_to_parquet.py](./scripts/xlsx_to_parquet.py) — Excel 批次轉 Parquet（目錄/glob/多檔、指定 sheet、snappy/zstd、Row Group 設定、防非法路徑崩潰、秒級 dry-run；支援 uv run 零依賴執行）
+- [scripts/csv_to_parquet.py](./scripts/csv_to_parquet.py) — CSV 批次轉 Parquet（流式分片 `--rows-per-file`、多 part 輸出、`--type-mode auto/str`、編碼容錯、秒級二進位 dry-run；支援 uv run 零依賴執行）

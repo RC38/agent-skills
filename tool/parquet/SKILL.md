@@ -71,6 +71,24 @@ import pyarrow.parquet as pq
 pip install pyarrow duckdb
 ```
 
+### 情境 E：離線環境手動下載 wheel
+
+DuckDB / PyArrow 皆為**預先編譯好的二進位 wheel**，正常環境下 `pip` / `uv` 會自動依平台抓取對應檔案（macOS universal2、Linux x86_64/aarch64、Windows），無需手動下載或編譯。
+
+僅在離線或受限網路環境才需手動下載：
+
+1. 至 [PyPI simple index](https://pypi.org/simple/duckdb/) 選取與目標平台相符的 `.whl`
+   （例如 `duckdb-1.5.5-cp312-cp312-macosx_10_9_universal2.whl`，注意 Python 版本 cpXXX、作業系統與架構須一致）。
+2. 將 wheel 複製至離線機器後安裝：
+
+```bash
+pip install ./duckdb-*.whl
+# 或 uv
+uv pip install ./duckdb-*.whl
+```
+
+> 官方文件（[DuckDB Python Installation](https://duckdb.org/docs/stable/guides/python/install)）同樣建議直接 `pip install duckdb`，官網本身不提供獨立 wheel 下載頁。
+
 ---
 
 ## 2. 核心操作配方（Cookbook）
